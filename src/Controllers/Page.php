@@ -8,8 +8,8 @@
 namespace Example\Controllers;
 
 use Example\Page\InvalidPageException;
+use Example\Template\FrontEndRenderer;
 use Http\Response;
-use Example\Template\Renderer;
 use Example\Page\PageReader;
 
 class Page
@@ -20,7 +20,7 @@ class Page
 
     public function __construct(
         Response $response,
-        Renderer $renderer,
+        FrontEndRenderer $renderer,
         PageReader $pageReader
     ) {
         $this->response = $response;

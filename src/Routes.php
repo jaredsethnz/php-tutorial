@@ -8,5 +8,5 @@
 
 return [
     ['GET', '/', ['Example\Controllers\Homepage', 'show']],
-    ['GET', '/index.php/{slug}', ['Example\Controllers\Page', 'show']],
+    ['GET', '/{slug}', ['Example\Controllers\Page', 'show']],
 ];

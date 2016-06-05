@@ -7,9 +7,9 @@
  */
 namespace Example\Controllers;
 
+use Example\Template\FrontEndRenderer;
 use Http\Request;
 use Http\Response;
-use Example\Template\Renderer;
 
 class Homepage
 {
@@ -20,7 +20,7 @@ class Homepage
     public function __construct(
         Request $request,
         Response $response,
-        Renderer $renderer
+        FrontEndRenderer $renderer
     ) {
         $this->request = $request;
         $this->response = $response;

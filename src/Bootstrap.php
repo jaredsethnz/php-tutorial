@@ -35,8 +35,6 @@ $routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
 
 $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
 
-//echo $request->getUri();
-
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 switch ($routeInfo[0]) {
     case \FastRoute\Dispatcher::NOT_FOUND:
