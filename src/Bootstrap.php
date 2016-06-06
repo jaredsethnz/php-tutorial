@@ -41,7 +41,7 @@ $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 
 //  CHECK IF A USER IS LOGGED IN
 session_start();
-if (!isset($_SESSION['logged_in']) && $request->getPath() != '/')
+if (!isset($_SESSION['logged_in']) && !nonLoggedInRoutes($request))
 {
     $className = 'Example\Controllers\Loginpage';
     $method = 'show';
@@ -74,3 +74,25 @@ else
     }
 }
 echo $response->getContent();
+
+function nonLoggedInRoutes(Request $request)
+{
+    switch ($request->getPath()) {
+        case '/':
+            return true;
+        case '/registration':
+            return true;
+        case '/register':
+            return true;
+        case '/registration/checkemail':
+            return true;
+        case '/registration/checkemail':
+            return true;
+        case '/registration/checkpass':
+            return true;
+        case  '/registration/checkusername':
+            return true;
+        default:
+            return false;
+    }
+}

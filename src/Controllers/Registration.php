@@ -27,4 +27,54 @@ class Registration
         $this->response = $response;
         $this->renderer = $renderer;
     }
+
+    public function show()
+    {
+        $data = [];
+        $html = $this->renderer->render('Registration', $data);
+        $this->response->setContent($html);
+    }
+
+    public function validateEmail()
+    {
+        $isValid = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+        if ($isValid)
+        {
+            echo "<span class='status-not-available'>Email valid</span>";
+        }
+        else{
+            echo "<span class='status-not-available'>Email not valid</span>";
+        }
+    }
+
+    public function validateUsername()
+    {
+        $username = filter_input(INPUT_POST, 'username');
+        if ($username)
+        {
+            echo "Username available";
+        }
+        else{
+            echo "Username already in use";
+        }
+    }
+
+    public function validatePassword()
+    {
+        $password = filter_input(INPUT_POST, 'password');
+        if (!$password || strlen($password) < 8)
+        {
+            echo "Password must be at least 8 characters long";
+        }
+        else{
+            echo "Password valid";
+        }
+    }
+
+    public function signup()
+    {
+        $data = [];
+        $html = $this->renderer->render('Homepage', $data);
+        $this->response->setContent($html);
+    }
 }
