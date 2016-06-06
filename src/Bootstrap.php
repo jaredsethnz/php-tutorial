@@ -2,6 +2,8 @@
 
 namespace Example;
 
+use Http\Request;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 error_reporting(E_ALL);
@@ -36,26 +38,49 @@ $routeDefinitionCallback = function (\FastRoute\RouteCollector $r) {
 $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
 
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
-switch ($routeInfo[0]) {
-    case \FastRoute\Dispatcher::NOT_FOUND:
-        $response->setContent('404 - Page not found');
-        $response->setStatusCode(404);
-        break;
-    case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-        $response->setContent('405 - Method not allowed');
-        $response->setStatusCode(405);
-        break;
-    case \FastRoute\Dispatcher::FOUND:
-        $className = $routeInfo[1][0];
-        $method = $routeInfo[1][1];
-        $vars = $routeInfo[2];
 
-        $class = $injector->make($className);
-        $class->$method($vars);
-        break;
-}
-foreach ($response->getHeaders() as $header) {
-    header($header, false);
-}
+session_start();
+//  CHECK IF A USER IS LOGGED IN
 
+if (!isset($_SESSION['logged_in']) && $request->getPath() != '/')
+{
+    $params = $request->getParameters();
+    if (isset($params['username']) && isset($params['password']))
+    {
+        
+        $_SESSION['logged_in'] = ($params['username'] == 'Jared' ? true : false);
+        header('Location: /', true);
+    }
+    $className = 'Example\Controllers\Loginpage';
+    $method = 'show';
+    //$vars = $routeInfo[2];
+
+    $class = $injector->make($className);
+    $class->$method();
+}
+else
+{
+    switch ($routeInfo[0]) {
+        case \FastRoute\Dispatcher::NOT_FOUND:
+            $response->setContent('404 - Page not found');
+            $response->setStatusCode(404);
+            break;
+        case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+            $response->setContent('405 - Method not allowed');
+            $response->setStatusCode(405);
+            break;
+        case \FastRoute\Dispatcher::FOUND:
+            //var_dump(include ('LoginAuthenticator.php'));
+            $className = $routeInfo[1][0];
+            $method = $routeInfo[1][1];
+            $vars = $routeInfo[2];
+
+            $class = $injector->make($className);
+            $class->$method($vars);
+            break;
+    }
+    foreach ($response->getHeaders() as $header) {
+        header($header, false);
+    }
+}
 echo $response->getContent();

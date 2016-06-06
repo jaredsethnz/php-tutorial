@@ -22,6 +22,7 @@ $injector->define('Http\HttpRequest', [
 $injector->alias('Http\Response', 'Http\HttpResponse');
 $injector->share('Http\HttpResponse');
 
+
 // Mustachey stuffs
 //$injector->define('Mustache_Engine', [
 //    ':options' => [
