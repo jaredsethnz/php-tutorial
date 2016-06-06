@@ -64,13 +64,6 @@ class ComposerStaticInitd9ac6b376a014a882c663bc5a1565e84
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
             ),
         ),
-        'M' => 
-        array (
-            'Mustache' => 
-            array (
-                0 => __DIR__ . '/..' . '/mustache/mustache/src',
-            ),
-        ),
     );
 
     public static function getInitializer(ClassLoader $loader)

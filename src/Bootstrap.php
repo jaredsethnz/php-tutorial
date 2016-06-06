@@ -39,22 +39,12 @@ $dispatcher = \FastRoute\simpleDispatcher($routeDefinitionCallback);
 
 $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 
-session_start();
 //  CHECK IF A USER IS LOGGED IN
-
+session_start();
 if (!isset($_SESSION['logged_in']) && $request->getPath() != '/')
 {
-    $params = $request->getParameters();
-    if (isset($params['username']) && isset($params['password']))
-    {
-        
-        $_SESSION['logged_in'] = ($params['username'] == 'Jared' ? true : false);
-        header('Location: /', true);
-    }
     $className = 'Example\Controllers\Loginpage';
     $method = 'show';
-    //$vars = $routeInfo[2];
-
     $class = $injector->make($className);
     $class->$method();
 }

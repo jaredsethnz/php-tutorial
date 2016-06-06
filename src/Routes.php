@@ -9,6 +9,7 @@
 return [
     ['GET', '/login', ['Example\Controllers\Loginpage', 'show']],
     ['GET', '/loginauth', ['Example\Controllers\Loginpage', 'authenticate']],
+    ['GET', '/logout', ['Example\Controllers\Loginpage', 'logout']],
     ['GET', '/', ['Example\Controllers\Homepage', 'show']],
     ['GET', '/{slug}', ['Example\Controllers\Page', 'show']],
 ];

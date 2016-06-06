@@ -2,16 +2,197 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ca2d9e6-4329-4edf-9547-00f164eb4af0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controllers/Loginpage.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/LoginAuthenticator.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Login.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Controllers/Registration.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Loginpage.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Registration.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/templates/Login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.php_cs" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.styleci.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/bin/build_bootstrap.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/composer.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/phpunit.xml.dist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Autoloader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/AbstractCache.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/FilesystemCache.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/NoopCache.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Compiler.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Context.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Engine.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/InvalidArgumentException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/LogicException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/RuntimeException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/SyntaxException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownFilterException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownHelperException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownTemplateException.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/HelperCollection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/LambdaHelper.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/ArrayLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/CascadingLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/FilesystemLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/InlineLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/MutableLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/StringLoader.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/AbstractLogger.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/StreamLogger.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Parser.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Template.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Tokenizer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/AutoloaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/AbstractCacheTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/FilesystemCacheTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/CompilerTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ContextTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/EngineTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/SyntaxExceptionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownFilterExceptionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownHelperExceptionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownTemplateExceptionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/ClosureQuirksTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/EngineTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/FiltersTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/HigherOrderSectionsTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/LambdaHelperTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/MustacheSpecTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/PartialLambdaIndentTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/StrictCallablesTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/CallTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ExamplesTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/HigherOrderSectionsTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/InheritanceTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheInjectionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheSpecTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/NestedPartialIndentTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ObjectSectionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FunctionalTestCase.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/HelperCollectionTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/ArrayLoaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/CascadingLoaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/FilesystemLoaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/InlineLoaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/StringLoaderTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/AbstractLoggerTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/StreamLoggerTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ParserTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/SpecTestCase.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TemplateTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TokenizerTest.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/bootstrap.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Bar.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Foo.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/NonMustacheClass.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/Blocks.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/partials/parent.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/ChildContext.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/Comments.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/Delimiters.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/DotNotation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/DoubleSection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/Escaped.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/Filters.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/GrandParentContext.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/I18n.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/ImplicitIterator.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/InvertedDoubleSection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/InvertedSection.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/NestedPartials.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/fourth.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/second.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/third.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/Partials.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials/header.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/RecursivePartials.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/partials/child.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/SectionIteratorObjects.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/SectionMagicObjects.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/SectionObjects.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/Sections.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/SectionsNested.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/Simple.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/Unescaped.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/UTF8.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/UTF8Unescaped.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/Whitespace.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/partials/alphabet.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/alpha.ms" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/beta.ms" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/one.mustache" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/two.mustache" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/style.css" afterPath="$PROJECT_DIR$/public/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bootstrap.php" afterPath="$PROJECT_DIR$/src/Bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Dependencies.php" afterPath="$PROJECT_DIR$/src/Dependencies.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Controllers/Loginpage.php" afterPath="$PROJECT_DIR$/src/Controllers/Loginpage.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Menu/ArrayMenuReader.php" afterPath="$PROJECT_DIR$/src/Menu/ArrayMenuReader.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Routes.php" afterPath="$PROJECT_DIR$/src/Routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/Layout.html" afterPath="$PROJECT_DIR$/templates/Layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
     </list>
     <ignored path="php-tutorial.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,31 +214,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bootstrap.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bootstrap.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginAuthenticator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/LoginAuthenticator.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Response.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Response.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -66,35 +227,17 @@
       <file leaf-file-name="Page.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Page.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="435">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <element signature="e#118#156#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dependencies.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Dependencies.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HttpRequest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/HttpRequest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Request.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Request.php">
+      <file leaf-file-name="FilePageReader.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Page/FilePageReader.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -103,11 +246,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Routes.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Routes.php">
+      <file leaf-file-name="Page.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Page.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="45">
+              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -116,18 +259,63 @@
       <file leaf-file-name="Loginpage.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Loginpage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+            <state relative-caret-position="426">
+              <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
+              <folding>
+                <element signature="e#118#156#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Registration.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Registration.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Login.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Login.html">
+      <file leaf-file-name="Loginpage.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/Loginpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Registration.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/Registration.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+              <folding>
+                <element signature="e#6#85#0#PHP" expanded="true" />
+                <element signature="e#118#156#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page-one.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/page-one.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -149,11 +337,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/.htaccess" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/Template/TwigRenderer.php" />
         <option value="$PROJECT_DIR$/templates/Homepage.html" />
         <option value="$PROJECT_DIR$/src/Template/FrontEndRenderer.php" />
-        <option value="$PROJECT_DIR$/src/Controllers/Page.php" />
         <option value="$PROJECT_DIR$/src/Controllers/Homepage.php" />
         <option value="$PROJECT_DIR$/src/Menu/MenuReader.php" />
         <option value="$PROJECT_DIR$/src/Template/FrontEndTwigRenderer.php" />
@@ -161,13 +347,20 @@
         <option value="$PROJECT_DIR$/src/Login.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/templates/Layout.html" />
-        <option value="$PROJECT_DIR$/src/Menu/ArrayMenuReader.php" />
-        <option value="$PROJECT_DIR$/src/Routes.php" />
-        <option value="$PROJECT_DIR$/src/Controllers/Loginpage.php" />
-        <option value="$PROJECT_DIR$/templates/Login.html" />
         <option value="$PROJECT_DIR$/src/LoginAuthenticator.php" />
         <option value="$PROJECT_DIR$/src/Dependencies.php" />
         <option value="$PROJECT_DIR$/src/Bootstrap.php" />
+        <option value="$PROJECT_DIR$/templates/Login.html" />
+        <option value="$PROJECT_DIR$/src/Menu/ArrayMenuReader.php" />
+        <option value="$PROJECT_DIR$/src/Routes.php" />
+        <option value="$PROJECT_DIR$/src/Controllers/Registration.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/pages/logout.md" />
+        <option value="$PROJECT_DIR$/src/Controllers/Page.php" />
+        <option value="$PROJECT_DIR$/pages/test.md" />
+        <option value="$PROJECT_DIR$/src/Controllers/Loginpage.php" />
+        <option value="$PROJECT_DIR$/templates/Registration.html" />
+        <option value="$PROJECT_DIR$/templates/Loginpage.html" />
       </list>
     </option>
   </component>
@@ -179,8 +372,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="2560" />
-    <option name="height" value="1440" />
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -237,54 +430,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-tutorial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-tutorial" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="patricklouys" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-tutorial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="php-tutorial" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="vendor" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="patricklouys" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="http" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -463,6 +608,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -485,17 +636,18 @@
       <updated>1465082595997</updated>
       <workItem from="1465082597618" duration="395000" />
       <workItem from="1465083068828" duration="17688000" />
+      <workItem from="1465175871828" duration="9107000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18083000" />
+    <option name="totallyTimeSpent" value="27190000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19492188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19444445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -518,10 +670,96 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/Bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/LoginAuthenticator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Response.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding>
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dependencies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/HttpRequest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="115" column="20" selection-start-line="115" selection-start-column="20" selection-end-line="115" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Loginpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
+          <folding>
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Loginpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -574,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -582,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
           <caret line="83" column="20" selection-start-line="83" selection-start-column="20" selection-end-line="83" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -590,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1350">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,22 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Page/FilePageReader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -626,14 +845,6 @@
             <element signature="e#7#87#0#PHP" expanded="false" />
             <element signature="e#116#146#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -651,23 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="351">
           <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Page.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -687,67 +881,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Template/FrontEndTwigRenderer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu/MenuReader.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Menu/ArrayMenuReader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Loginpage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Response.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -767,18 +904,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Login.html">
+    <entry file="file://$PROJECT_DIR$/vendor/patricklouys/http/src/Response.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dependencies.php">
+    <entry file="file://$PROJECT_DIR$/templates/Homepage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -791,10 +936,145 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dependencies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Layout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Menu/ArrayMenuReader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="41" selection-start-line="13" selection-start-column="41" selection-end-line="13" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Template/FrontEndTwigRenderer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="57" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Page/FilePageReader.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/logout.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/page-one.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Registration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="e#6#85#0#PHP" expanded="true" />
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Page.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/test.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
+        <state relative-caret-position="285">
+          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Loginpage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="48" column="54" selection-start-line="48" selection-start-column="54" selection-end-line="48" selection-end-column="54" />
+          <folding>
+            <element signature="e#118#156#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Registration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Loginpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
