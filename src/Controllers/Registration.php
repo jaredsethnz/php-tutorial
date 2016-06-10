@@ -40,10 +40,12 @@ class Registration
         $isValid = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
         if ($isValid)
         {
-            echo "<span class='status-not-available'>Email valid</span>";
+            $html = "<span class='status-not-available'>Email valid</span>";
+            $this->response->setContent($html);
         }
         else{
-            echo "<span class='status-not-available'>Email not valid</span>";
+            $html = "<span class='status-not-available'>Email not valid</span>";
+            $this->response->setContent($html);
         }
     }
 
@@ -52,10 +54,12 @@ class Registration
         $username = filter_input(INPUT_POST, 'username');
         if ($username)
         {
-            echo "Username available";
+            $html = "Username available";
+            $this->response->setContent($html);
         }
         else{
-            echo "Username already in use";
+            $html = "Username already in use";
+            $this->response->setContent($html);
         }
     }
 
@@ -64,10 +68,12 @@ class Registration
         $password = filter_input(INPUT_POST, 'password');
         if (!$password || strlen($password) < 8)
         {
-            echo "Password must be at least 8 characters long";
+            $html = "Password must be at least 8 characters long";
+            $this->response->setContent($html);
         }
         else{
-            echo "Password valid";
+            $html = "Password valid";
+            $this->response->setContent($html);
         }
     }
 
