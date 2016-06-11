@@ -43,7 +43,7 @@ $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getPath());
 session_start();
 if (!isset($_SESSION['logged_in']) && !nonLoggedInRoutes($request))
 {
-    $className = 'Example\Controllers\Loginpage';
+    $className = 'Forum\Controllers\Loginpage';
     $method = 'show';
     $class = $injector->make($className);
     $class->$method();

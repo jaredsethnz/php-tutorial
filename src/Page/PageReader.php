@@ -5,7 +5,7 @@
  * Date: 4/06/16
  * Time: 9:01 PM
  */
-namespace Example\Page;
+namespace Forum\Page;
 
 interface PageReader
 {

@@ -5,9 +5,9 @@
  * Date: 2/06/16
  * Time: 9:59 PM
  */
-namespace Example\Controllers;
+namespace Forum\Controllers;
 
-use Example\Template\FrontEndRenderer;
+use Forum\Template\FrontEndRenderer;
 use Http\Request;
 use Http\Response;
 

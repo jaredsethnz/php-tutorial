@@ -5,12 +5,12 @@
  * Date: 4/06/16
  * Time: 8:54 PM
  */
-namespace Example\Controllers;
+namespace Forum\Controllers;
 
-use Example\Page\InvalidPageException;
-use Example\Template\FrontEndRenderer;
+use Forum\Page\InvalidPageException;
+use Forum\Template\FrontEndRenderer;
 use Http\Response;
-use Example\Page\PageReader;
+use Forum\Page\PageReader;
 
 class Page
 {

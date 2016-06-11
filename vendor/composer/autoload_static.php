@@ -21,11 +21,8 @@ class ComposerStaticInitd9ac6b376a014a882c663bc5a1565e84
         ),
         'F' => 
         array (
+            'Forum\\' => 6,
             'FastRoute\\' => 10,
-        ),
-        'E' => 
-        array (
-            'Example\\' => 8,
         ),
         'A' => 
         array (
@@ -42,13 +39,13 @@ class ComposerStaticInitd9ac6b376a014a882c663bc5a1565e84
         array (
             0 => __DIR__ . '/..' . '/patricklouys/http/src',
         ),
+        'Forum\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
-        ),
-        'Example\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
         'Auryn\\' => 
         array (

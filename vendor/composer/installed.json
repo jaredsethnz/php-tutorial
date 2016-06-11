@@ -154,69 +154,6 @@
         ]
     },
     {
-        "name": "rdlowrey/auryn",
-        "version": "v1.4.0",
-        "version_normalized": "1.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/rdlowrey/auryn.git",
-            "reference": "2e4240791162dfe073d59654d8dc06df0eb0b73f"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/2e4240791162dfe073d59654d8dc06df0eb0b73f",
-            "reference": "2e4240791162dfe073d59654d8dc06df0eb0b73f",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.0"
-        },
-        "require-dev": {
-            "athletic/athletic": "~0.1",
-            "fabpot/php-cs-fixer": "~1.9",
-            "phpunit/phpunit": "^4.7"
-        },
-        "time": "2016-03-14 20:10:19",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Auryn\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Dan Ackroyd",
-                "email": "Danack@basereality.com",
-                "homepage": "http://www.basereality.com",
-                "role": "Developer"
-            },
-            {
-                "name": "Levi Morrison",
-                "email": "levim@php.net",
-                "homepage": "http://morrisonlevi.github.com/",
-                "role": "Developer"
-            },
-            {
-                "name": "Daniel Lowrey",
-                "email": "rdlowrey@gmail.com",
-                "homepage": "https://github.com/rdlowrey",
-                "role": "Creator / Main Developer"
-            }
-        ],
-        "description": "Auryn is a dependency injector for bootstrapping object-oriented PHP applications.",
-        "homepage": "https://github.com/rdlowrey/auryn",
-        "keywords": [
-            "dependency injection",
-            "dic",
-            "ioc"
-        ]
-    },
-    {
         "name": "twig/twig",
         "version": "v1.24.1",
         "version_normalized": "1.24.1.0",
@@ -277,6 +214,69 @@
         "homepage": "http://twig.sensiolabs.org",
         "keywords": [
             "templating"
+        ]
+    },
+    {
+        "name": "rdlowrey/auryn",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/rdlowrey/auryn.git",
+            "reference": "2e4240791162dfe073d59654d8dc06df0eb0b73f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/rdlowrey/auryn/zipball/2e4240791162dfe073d59654d8dc06df0eb0b73f",
+            "reference": "2e4240791162dfe073d59654d8dc06df0eb0b73f",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "require-dev": {
+            "athletic/athletic": "~0.1",
+            "fabpot/php-cs-fixer": "~1.9",
+            "phpunit/phpunit": "^4.7"
+        },
+        "time": "2016-03-14 20:10:19",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Auryn\\": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Dan Ackroyd",
+                "email": "Danack@basereality.com",
+                "homepage": "http://www.basereality.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Levi Morrison",
+                "email": "levim@php.net",
+                "homepage": "http://morrisonlevi.github.com/",
+                "role": "Developer"
+            },
+            {
+                "name": "Daniel Lowrey",
+                "email": "rdlowrey@gmail.com",
+                "homepage": "https://github.com/rdlowrey",
+                "role": "Creator / Main Developer"
+            }
+        ],
+        "description": "Auryn is a dependency injector for bootstrapping object-oriented PHP applications.",
+        "homepage": "https://github.com/rdlowrey/auryn",
+        "keywords": [
+            "dependency injection",
+            "dic",
+            "ioc"
         ]
     }
 ]

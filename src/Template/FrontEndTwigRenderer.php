@@ -5,9 +5,9 @@
  * Date: 5/06/16
  * Time: 12:48 PM
  */
-namespace Example\Template;
+namespace Forum\Template;
 
-use Example\Menu\MenuReader;
+use Forum\Menu\MenuReader;
 
 class FrontEndTwigRenderer implements FrontEndRenderer
 {

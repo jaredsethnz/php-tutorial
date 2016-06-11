@@ -5,8 +5,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Your Name",
-      "email": "your@email.com",
+      "name": "Jared GOmbert",
+      "email": "jared.gombert@gmail.com",
       "role": "Creator / Main Developer"
     }
   ],
@@ -20,7 +20,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Example\\": "src/"
+      "Forum\\": "src/"
     }
   }
 }

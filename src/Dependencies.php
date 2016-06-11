@@ -22,19 +22,9 @@ $injector->define('Http\HttpRequest', [
 $injector->alias('Http\Response', 'Http\HttpResponse');
 $injector->share('Http\HttpResponse');
 
-
-// Mustachey stuffs
-//$injector->define('Mustache_Engine', [
-//    ':options' => [
-//        'loader' => new Mustache_Loader_FilesystemLoader(dirname(__DIR__) . '/templates', [
-//            'extension' => '.html',
-//        ]),
-//    ],
-//]);
-
 // Twiggy stuffs
-$injector->alias('Example\Template\Renderer', 'Example\Template\TwigRenderer');
-$injector->alias('Example\Template\FrontendRenderer', 'Example\Template\FrontendTwigRenderer');
+$injector->alias('Forum\Template\Renderer', 'Forum\Template\TwigRenderer');
+$injector->alias('Forum\Template\FrontendRenderer', 'Forum\Template\FrontendTwigRenderer');
 
 $injector->delegate('Twig_Environment', function() use ($injector) {
     $loader = new Twig_Loader_Filesystem(dirname(__DIR__) . '/templates');
@@ -43,14 +33,14 @@ $injector->delegate('Twig_Environment', function() use ($injector) {
 });
 
  // Page file reader
-$injector->define('Example\Page\FilePageReader', [
+$injector->define('Forum\Page\FilePageReader', [
     ':pageFolder' => __DIR__ . '/../pages',
 ]);
 
-$injector->alias('Example\Page\PageReader', 'Example\Page\FilePageReader');
-$injector->share('Example\Page\FilePageReader');
+$injector->alias('Forum\Page\PageReader', 'Forum\Page\FilePageReader');
+$injector->share('Forum\Page\FilePageReader');
 
-$injector->alias('Example\Menu\MenuReader', 'Example\Menu\ArrayMenuReader');
-$injector->share('Example\Menu\ArrayMenuReader');
+$injector->alias('Forum\Menu\MenuReader', 'Forum\Menu\ArrayMenuReader');
+$injector->share('Forum\Menu\ArrayMenuReader');
 
 return $injector;

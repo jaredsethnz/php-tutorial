@@ -5,7 +5,7 @@
  * Date: 5/06/16
  * Time: 1:01 PM
  */
-namespace Example\Menu;
+namespace Forum\Menu;
 
 class ArrayMenuReader implements MenuReader
 {

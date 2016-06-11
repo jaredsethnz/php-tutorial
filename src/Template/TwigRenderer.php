@@ -6,8 +6,8 @@
  * Date: 5/06/16
  * Time: 12:28 PM
  */
-namespace Example\Template;
-use Example\Template\Renderer;
+namespace Forum\Template;
+use Forum\Template\Renderer;
 use Twig_Environment;
 
 class TwigRenderer implements Renderer

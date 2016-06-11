@@ -5,7 +5,7 @@
  * Date: 4/06/16
  * Time: 5:16 PM
  */
-namespace Example\Template;
+namespace Forum\Template;
 
 interface Renderer
 {

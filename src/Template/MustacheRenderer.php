@@ -5,7 +5,7 @@
  * Date: 4/06/16
  * Time: 5:18 PM
  */
-namespace Example\Template;
+namespace Forum\Template;
 
 use Mustache_Engine;
 
