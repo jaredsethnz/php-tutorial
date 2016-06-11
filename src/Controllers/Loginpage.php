@@ -10,22 +10,26 @@ namespace Forum\Controllers;
 use Forum\Template\FrontEndRenderer;
 use Http\Request;
 use Http\Response;
+use Forum\db\CommonFunctions;
 
 class Loginpage
 {
     private $request;
     private $response;
     private $renderer;
+    private $commonFunctions;
 
     public function __construct(
         Request $request,
         Response $response,
-        FrontEndRenderer $renderer
+        FrontEndRenderer $renderer,
+        CommonFunctions $cf
     )
     {
         $this->request = $request;
         $this->response = $response;
         $this->renderer = $renderer;
+        $this->commonFunctions = $cf;
     }
 
     public function show()

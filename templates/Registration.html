@@ -1,12 +1,18 @@
 {% extends "Layout.html" %}
 {% block content %}
 <form action="/register" method="post">
+    <label for="firstName">First Name</label><br>
+    <input type="text" name="firstName" id="firstName"><br>
+    <label for="lastName">Last Name</label><br>
+    <input type="text" name="lastName" id="lastName"><br>
     <label for="email">Email</label><br>
     <input type="email" name="email" id="email" onblur="checkEmailAvailability()"><span id="email-availability-status"></span><br>
-    <label for="username">Username</label><br>
-    <input type="text" name="username" id="username" onblur="checkUsernameAvailability()"><span id="username-availability-status"></span><br>
+    <label for="nickname">Nickname</label><br>
+    <input type="text" name="nickname" id="nickname" onblur="checkUsernameAvailability()"><span id="username-availability-status"></span><br>
     <label for="password">Password</label><br>
     <input type="password" name="password" id="password" onblur="checkPasswordLength()"><span id="password-length-status"></span><br>
+    <label for="passwordConfirmation">Password Confirmation</label><br>
+    <input type="password" name="passwordConfirmation" id="passwordConfirmation"><br>
     <input type="submit" value="Submit">
 </form>
 <script>

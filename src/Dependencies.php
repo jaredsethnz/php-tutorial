@@ -8,7 +8,7 @@
 $injector = new \Auryn\Injector;
 
 
-// HtTTP Response and Requests
+// HTTP Response and Requests
 $injector->alias('Http\Request', 'Http\HttpRequest');
 $injector->share('Http\HttpRequest');
 $injector->define('Http\HttpRequest', [
@@ -21,6 +21,11 @@ $injector->define('Http\HttpRequest', [
 
 $injector->alias('Http\Response', 'Http\HttpResponse');
 $injector->share('Http\HttpResponse');
+
+// CommonFunctions
+
+$injector->alias('Forum\db\CommonFunctions', 'Forum\db\CommonFunctions');
+$injector->share('Forum\db\CommonFunctions');
 
 // Twiggy stuffs
 $injector->alias('Forum\Template\Renderer', 'Forum\Template\TwigRenderer');

@@ -7,6 +7,7 @@
  */
 namespace Forum\Controllers;
 
+use Forum\db\CommonFunctions;
 use Forum\Page\InvalidPageException;
 use Forum\Template\FrontEndRenderer;
 use Http\Response;
@@ -17,15 +18,18 @@ class Page
     private $response;
     private $renderer;
     private $pageReader;
+    private $commonFunctions;
 
     public function __construct(
         Response $response,
         FrontEndRenderer $renderer,
-        PageReader $pageReader
+        PageReader $pageReader,
+        CommonFunctions $cf
     ) {
         $this->response = $response;
         $this->renderer = $renderer;
         $this->pageReader = $pageReader;
+        $this->commonFunctions = $cf;
     }
     public function show($params)
     {
