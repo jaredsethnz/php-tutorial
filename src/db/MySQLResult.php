@@ -18,7 +18,7 @@ class MySQLResult
     }
 
     function size() {
-        return mysql_num_rows($this->query) ;
+        return mysqli_num_rows($this->query) ;
     }
 
     function fetch() {

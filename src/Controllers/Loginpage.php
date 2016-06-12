@@ -34,60 +34,55 @@ class Loginpage
 
     public function show()
     {
-        $params = $this->request->getParameters();
-        if (isset($params['username']) && isset($params['password']))
-        {
-            if (strlen($params['username']) > 0 && strlen($params['password']) > 0) {
-                $this->authenticate();
-            }
-            else
-            {
-                $this->authenticateFailure();
-            }
-        }
-        else
-        {
-            $data = [
-                'status' => '',
-            ];
-            $html = $this->renderer->render('Loginpage', $data);
-            $this->response->setContent($html);
-        }
-    }
-
-    public function authenticate()
-    {
-        $params = $this->request->getParameters();
-        if ($params['username'] == 'Jared')
-        {
-            //echo $this->request->getPath();
-            $_SESSION['logged_in'] = true;
-            $_SESSION['username'] = $params['username'];
-            $data = [
-                'name' => $_SESSION['username'],
-            ];
-            $html = $this->renderer->render('Homepage', $data);
-            $this->response->setContent($html);
-        }
-        else
-        {
-            $this->authenticateFailure();
-        }
-    }
-
-    public function authenticateFailure()
-    {
         $data = [
-            'status' => 'Incorrect username or password combination.',
+            'content' => '',
         ];
         $html = $this->renderer->render('Loginpage', $data);
         $this->response->setContent($html);
     }
 
+    public function authenticate()
+    {
+        $data = [ 'content' => 'Invalid nickname, password combination!', 'redirect' => 'Loginpage' ];
+        $params = $this->request->getParameters();
+
+        if (isset($params['nickname']) && isset($params['password']))
+        {
+            $nick = $params['nickname'];
+            $pass = $params['password'];
+            $sql = "SELECT * FROM User WHERE nickname = '$nick'";
+            $db = $this->commonFunctions->getDatabase();
+            $result = $db->query($sql);
+
+            if ($result->size() > 0 && $result['activated'] != 0)
+            {
+                $result = $result->fetch();
+                $hash = $result['password'];
+                if (password_verify($pass, $hash) == true)
+                {
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['userID'] = $result['userID'];
+                    $_SESSION['nickName'] = $result['nickName'];
+                    $data = [ 'content' => 'Welcome back '.$_SESSION['nickName'].'!', 'redirect' => 'Homepage' ];
+                }
+                else
+                {
+                    $data = [ 'content' => 'Invalid nickname, password combination!', 'redirect' => 'Loginpage' ];
+                }
+            }
+        }
+        else
+        {
+            $data = [ 'content' => 'Invalid nickname, password combination!', 'redirect' => 'Loginpage' ];
+        }
+        $html = $this->renderer->render($data['redirect'], $data);
+        $this->response->setContent($html, true);
+    }
+
     public function logout()
     {
         $data = [
-            'content' => 'Goodbye, ' . $_SESSION['username'],
+            'content' => 'Goodbye, ' . $_SESSION['nickName'],
         ];
         session_unset();
         $html = $this->renderer->render('Page', $data);

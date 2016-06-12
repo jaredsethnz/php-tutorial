@@ -11,6 +11,7 @@ use Forum\db\CommonFunctions;
 use Forum\Template\FrontEndRenderer;
 use Http\Request;
 use Http\Response;
+use PHPMailer;
 
 class Registration
 {
@@ -83,7 +84,8 @@ class Registration
 
     public function signup()
     {
-        if ($this->request->getMethod() == 'POST')
+        $data = [ 'message' => "We seem to have encountered an error during signup.\n Please try again!", 'redirect' => '/registration' ];
+        if ($this->request->getMethod() == 'POST' && strlen($this->request->getParameters()['extra']) == 0)
         {
             $params = $this->request->getParameters();
             $firstName = $this->sanitize($params['firstName']);
@@ -95,50 +97,98 @@ class Registration
             $activationHash = password_hash($this->generateRandomString(), PASSWORD_DEFAULT, ['cost' => 12]);
             $curDate = date('Y-d-m');
 
-
-            $sql = "INSERT INTO User
-                    VALUES('$nickName', '$firstName', '$lastName', '$email', '0', '1', '$curDate', '$password', '0', '$activationHash', 'null')";
+            $sql = "INSERT INTO User VALUES('null', '$nickName', '$firstName', '$lastName', '$email', '0', '1', '$curDate', '$password', '0', '$activationHash', 'null')";
             $db = $this->commonFunctions->getDatabase();
-            $result = $db->query($sql);
+            $db->query($sql);
 
-            $this->emailVerification($email, $activationHash);
-            $this->response->setContent(var_dump($result));
-            //$this->response->setContent("$firstName, $lastName, $email, $nickName, $password");
-
+            $emailSent = $this->emailVerification($email, $nickName,$activationHash);
+            if ($emailSent)
+            {
+                $data = [ 'content' => "Verification email sent to $email.\n Follow the link in the email to activate your account!", 'redirect' => '/login' ];
+            }
+            else
+            {
+                $data = [ 'content' => "Oops, there seems to have been an error sending a \n verification email to $email. Please try again!", 'redirect' => '/registration' ];
+            }
         }
-       // $html = $this->renderer->render('Homepage', $data);
-        //$this->response->setContent($html);
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
+        header( 'refresh:5;url='.$data['redirect'] );
     }
 
-    protected function emailVerification($email, $activationHash)
+    protected function emailVerification($email, $nickName, $activationHash)
     {
-        $to = $email; // Send email to our user
-        echo $to;
-        $subject = 'Signup | Verification'; // Give the email a subject
-        $message = '
- 
-            Thanks for signing up!
-            Your account has been created, you can login with the following credentials after you have activated your account by pressing the url below.
+        $mailer = new PHPMailer();
+        $mailer->isSMTP();
+        $mailer->Host = 'smtp.gmail.com';
+        $mailer->SMTPAuth = true;
+        $mailer->Username = 'indiecornerserver@gmail.com';
+        $mailer->Password = 'Jar3dG0mbert99';
+        $mailer->SMTPSecure = 'ssl';
+        $mailer->Port = 465;
+
+        $mailer->setFrom('indiecornerserver@gmail.com', 'SuperSudoku');
+        $mailer->addAddress($email);
+
+        $mailer->Subject = 'Account Activation | Email Confirmation';
+        $mailer->Body    = '
+
+            Thanks '.$nickName.' for signing up!
+            Your account has been created, you can login with your credentials after you have activated your account by clicking the url below.
+
+            --------------------------------------------------------------------------------------------------------------------------------------------
+
+            Please click this link to activate your account:
+            http://localhost:8888/register/verify?email='.$email.'&hash='.$activationHash.'
             
             --------------------------------------------------------------------------------------------------------------------------------------------
-             
-            Please click this link to activate your account:
-            http://localhost:8888/verify.php?email='.$email.'&hash='.$activationHash.'
-             
-            '; // Our message above including the link
+            
+            -IndieCornerTeam
 
-        $headers = 'From:noreply@supersudoku.com' . "\r\n"; // Set from headers
-        $headers .= "Reply-To:noreply@supersudoku.com . \r\n";
-        $mailSent = mail($to, $subject, $message, $headers); // Send our email
+            ';
 
-        if ($mailSent)
-        {
-            echo "SENT";
+        if(!$mailer->send()) {
+           return false;
+        } else {
+            return true;
         }
-        else
+    }
+
+    public function accountActivation()
+    {
+        $data = [];
+        $params = $this->request->getParameters();
+        if ((isset($params['email']) && isset($params['hash'])))
         {
-            echo "NOT SENT";
+            $email = $params['email'];
+            $hash = $params['hash'];
+
+            $sql = "SELECT * FROM User WHERE email = '$email'";
+            $db = $this->commonFunctions->getDatabase();
+            $result = $db->query($sql);
+            if ($result->size() > 0)
+            {
+                $user = $result->fetch();
+                if ($user['activationHash'] == $hash && $user['activated'] == 0)
+                {
+                    $sql = "UPDATE User SET activated = 1 WHERE email = '$email'";
+                    $db->query($sql);
+                    $data = [ 'content' => "Account $email has been activated!" ];
+                }
+                elseif ($user['activationHash'] == $hash && $user['activated'] == 1)
+                {
+                    $data = [ 'content' => "Account $email already activated!" ];
+                }
+            }
+            else
+            {
+                $data = [ 'content' => 'Invalid link!' ];
+            }
         }
+
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
+        header( "refresh:3;url=/login" );
     }
 
     protected function generateRandomString($length = 10) {

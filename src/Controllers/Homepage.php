@@ -34,8 +34,17 @@ class Homepage
     public function show()
     {
         $db = $this->commonFunctions->getDatabase();
+        $message = '';
+        if (isset($_SESSION['nickName']))
+        {
+            $message = 'Welcome back, '.$_SESSION['nickName'].'!';
+        }
+        else
+        {
+            $message = 'Discuss - Challenge - Play';
+        }
         $data = [
-            'name' => $this->request->getParameter('name', 'stranger'),
+            'content' => $message,
         ];
         $html = $this->renderer->render('Homepage', $data);
         $this->response->setContent($html);

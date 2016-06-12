@@ -11,7 +11,7 @@ class ArrayMenuReader implements MenuReader
 {
     public function readMenu()
     {
-        if (isset($_SESSION['logged_in']))
+        if (isset($_SESSION['loggedin']))
         {
             return [
                 ['href' => '/', 'text' => 'Homepage'],

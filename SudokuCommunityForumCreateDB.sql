@@ -5,6 +5,7 @@ create database SudokuCommunityForum;
 use SudokuCommunityForum;
 
 create table User(
+	userID int auto_increment not null primary key,
 	nickName varchar(25) not null unique key,
     firstName varchar(25) not null,
     lastName varchar(25) not null,
@@ -12,12 +13,10 @@ create table User(
     challengeable boolean default false,
     rank tinyint default 1,
     joinDate date not null,
-    dob date not null,
     password char(60) not null,
     activated boolean default false,
     activationHash char(60) not null,
-    profilePic longblob, 
-    primary key (nickName, firstName, lastName, email)
+    profilePic longblob
 );
 
 create table SudokuBoard(
@@ -29,21 +28,21 @@ create table SudokuBoard(
 
 create table ChallengeApproval(
 	challengeApprovalID int primary key auto_increment,
-    challengerNickName varchar(25) not null,
+    userID int not null,
     duration int not null,
     boardSize char(3) not null,
     difficulty tinyint not null,
     challengeApproved boolean default null,
-    foreign key (challengerNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table UserChallengeApproval(
 	challengeApprovalID int auto_increment,
-    userNickName varchar(25) not null,
+    userID int not null,
     userApproval boolean default null,
-    primary key (challengeApprovalID, userNickName),
+    primary key (challengeApprovalID, userID),
     foreign key (challengeApprovalID) references ChallengeApproval (challengeApprovalID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table ActiveChallenge(
@@ -56,44 +55,44 @@ create table ActiveChallenge(
 
 create table UserActiveChallenge(
 	activeChallengeID int auto_increment,
-    userNickName varchar(25) not null,
+    userID int not null,
     completionTime time,
-    primary key(activeChallengeID, userNickName),
+    primary key(activeChallengeID, userID),
     foreign key (activeChallengeID) references ActiveChallenge (activeChallengeID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table ChallengeHistory(
 	challengeHistoryID int primary key auto_increment,
     boardID int not null,
     dateArchived date not null,
-    winnerNickName varchar(25) not null,
+    userID int not null,
     foreign key (boardID) references SudokuBoard (boardID),
-    foreign key (winnerNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table UserChallengeHistory(
 	challengeHistoryID int auto_increment,
-    userNickName varchar(25) not null,
+    userID int not null,
     finishingNumber smallInt default 0,
-    primary key (challengeHistoryID, userNickName),
+    primary key (challengeHistoryID, userID),
     foreign key (challengeHistoryID) references ChallengeHistory (challengeHistoryID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table DeclinedChallenge(
 	declinedChallengeID int primary key auto_increment,
     dateDeclined date not null,
-    challengerNickName varchar(25) not null
+    challengerUserID int not null
 );
 
 create table UserDeclinedChallenge(
 	declinedChallengeID int auto_increment,
-    userNickName varchar(25) not null,
+    userID int not null,
     declined boolean default false,
-    primary key (declinedChallengeID, userNickName),
+    primary key (declinedChallengeID, userID),
     foreign key (declinedChallengeID) references DeclinedChallenge (declinedChallengeID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table Category(
@@ -103,29 +102,29 @@ create table Category(
 create table Thread(
 	threadID int auto_increment not null primary key,
     categoryName varchar(50) not null,
-    userNickName varchar(25) not null,
+    userID int not null,
     title varchar(50) not null,
     threadDate date not null,
     foreign key (categoryName) references Category (categoryName),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table Post(
 	postID int auto_increment not null primary key,
     threadID int not null,
-    userNickName varchar(25) not null,
+    userID int not null,
     postContent varchar(300) not null,
     postDate date not null,
     foreign key (threadID) references Thread (threadID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
 
 create table Reply(
 	replyID int auto_increment not null primary key,
     postID int not null,
-    userNickName varchar(25) not null,
+    userID int not null,
     replyContent varchar(300) not null,
     replyDate date not null,
     foreign key (postID) references Post (postID),
-    foreign key (userNickName) references User (nickName)
+    foreign key (userID) references User (userID)
 );
