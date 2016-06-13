@@ -36,6 +36,7 @@ class Profilepage
 
     public function show()
     {
+        $data = [];
         $nick = $_SESSION['nickName'];
         $userID = $_SESSION['userID'];
         $sql = "SELECT * FROM User WHERE nickName = '$nick' AND userID = '$userID'";
@@ -50,13 +51,8 @@ class Profilepage
                 'email' => $result['email'],
                 'challengeable' => intval($result['challengeable']),
                 'rank' => intval($result['rank']),
-                'profilepic' => $result['profilePic']
+                'profilepic' => $result['profilePic'] == 'null' ? 'images/profileImages/default.jpg' : ($result['profilePic'])
             ];
-            echo "<img src=profileImages/thor.jpg />";
-        }
-        else
-        {
-            $data = [];
         }
 
         $html = $this->renderer->render('Profilepage', $data);
@@ -65,17 +61,17 @@ class Profilepage
 
     public function saveChanges()
     {
+        $data = [ 'content' => 'Error saving changes!' ];
         $method = $this->request->getMethod();
-        $uploadDir = __DIR__ . '/../profileImages/';
 
         if($method == 'POST') {
+            $uploadDir = 'images/profileImages/';
             $fileName = $_FILES['photo']['name'];
             $tmpName  = $_FILES['photo']['tmp_name'];
-            $fileSize = $_FILES['photo']['size'];
-            $fileType = $_FILES['photo']['type'];
-            var_dump($tmpName);
+            $extension = explode('.', $fileName);
+            $extension = $extension[count($extension)-1];
 
-            $filePath = $uploadDir . $fileName;
+            $filePath = $uploadDir . $_SESSION['nickName'] . 'ProfilePic.' . $extension;
 
             $result = move_uploaded_file($tmpName, $filePath);
             if (!$result) {
@@ -89,7 +85,14 @@ class Profilepage
             $nick = $_SESSION['nickName'];
             $sql = "UPDATE user SET profilePic = '$filePath' WHERE nickName = '$nick'";
             $db = $this->commonFunctions->getDatabase();
-            $db->execute($sql);
+            $result = $db->execute($sql);
+            if ($result)
+            {
+                $data = [ 'content' => 'Changes saved!' ];
+            }
         }
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
+        header( "refresh:3;url=/profile" );
     }
 }

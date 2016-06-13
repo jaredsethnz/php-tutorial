@@ -2,7 +2,7 @@
 {% block content %}
 
 <form name="profile" enctype="multipart/form-data" action="/profile" method="POST">
-    <img id="preview" src="#" alt="Profile Image" width="150" height="150"/><br>
+    <img id="preview" src={{ profilepic }} alt="Profile Image" width="150" height="150"/><br>
     <input type="file" name="photo" id="photo" size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26"><br/>
 
     <label>Nickname: {{ nickname }}</label><br>
@@ -21,11 +21,10 @@
     <br>
     <label>Rank: </label>
     {% for i in 1..rank %}
-        *
+        <img src="images/star.png" width="15" height="15">
     {% endfor %}
     <br>
     <input type="submit" class="button" name="Submit" value="Submit">
-    &nbsp;&nbsp;<input type="reset" class="button" value="Cancel">
 </form>
 <script>
     function readURL(input) {

@@ -14,9 +14,9 @@ class ArrayMenuReader implements MenuReader
         if (isset($_SESSION['loggedin']))
         {
             return [
-                ['href' => '/', 'text' => 'Homepage'],
-                ['href' => '/page-one', 'text' => 'Page One'],
-                ['href' => '/page-two', 'text' => 'Page Two'],
+                ['href' => '/', 'text' => 'Home'],
+                ['href' => '/forum', 'text' => 'Forum'],
+                ['href' => '/challenges', 'text' => 'Challenges'],
                 ['href' => '/profile', 'text' => 'Profile'],
                 ['href' => '/logout', 'text' => 'Logout'],
             ];
@@ -24,9 +24,9 @@ class ArrayMenuReader implements MenuReader
         else
         {
             return [
-                ['href' => '/', 'text' => 'Homepage'],
-                ['href' => '/page-one', 'text' => 'Page One'],
-                ['href' => '/page-two', 'text' => 'Page Two'],
+                ['href' => '/', 'text' => 'Home'],
+                ['href' => '/forum', 'text' => 'Forum'],
+                ['href' => '/challenges', 'text' => 'Challenges'],
                 ['href' => '/profile', 'text' => 'Profile'],
                 ['href' => '/login', 'text' => 'Login'],
             ];

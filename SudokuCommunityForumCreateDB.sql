@@ -16,7 +16,7 @@ create table User(
     password char(60) not null,
     activated boolean default false,
     activationHash char(60) not null,
-    profilePic longblob
+    profilePic varchar(50)
 );
 
 create table SudokuBoard(

@@ -16,6 +16,8 @@ return [
     ['POST', '/register', ['Forum\Controllers\Registration', 'signup']],
     ['GET', '/register/verify', ['Forum\Controllers\Registration', 'accountActivation']],
     ['GET', '/', ['Forum\Controllers\Homepage', 'show']],
+    ['GET', '/forum', ['Forum\Controllers\Forumpage', 'show']],
+    ['GET', '/challenges', ['Forum\Controllers\ChallengePage', 'show']],
     ['GET', '/profile', ['Forum\Controllers\Profilepage', 'show']],
     ['POST', '/profile', ['Forum\Controllers\Profilepage', 'saveChanges']],
     ['GET', '/{slug}', ['Forum\Controllers\Page', 'show']],

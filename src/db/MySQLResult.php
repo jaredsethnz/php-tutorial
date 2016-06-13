@@ -32,6 +32,11 @@ class MySQLResult
         }
     }
 
+    function fetchResult()
+    {
+        return $this->query;
+    }
+
     function insertID(){
         return mysqli_insert_id($this->mysql->dbConn);
     }

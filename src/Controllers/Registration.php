@@ -73,7 +73,7 @@ class Registration
 
     public function signup()
     {
-        $data = [ 'message' => "We seem to have encountered an error during signup.\n Please try again!", 'redirect' => '/registration' ];
+        $data = [ 'content' => "We seem to have encountered an error during signup.\n Please try again!", 'redirect' => '/registration' ];
         if ($this->request->getMethod() == 'POST' && strlen($this->request->getParameters()['extra']) == 0)
         {
             $params = $this->request->getParameters();
@@ -86,7 +86,7 @@ class Registration
             $activationHash = password_hash($this->generateRandomString(), PASSWORD_DEFAULT, ['cost' => 12]);
             $curDate = date('Y-d-m');
 
-            if ($this->validateEmail($email) && $this->validateUsername($nickName)) {
+//            if ($this->validateEmail($params['email']) == 'true' && $this->validateUsername($params['nickname']) == 'true') {
                 $sql = "INSERT INTO User VALUES('null', '$nickName', '$firstName', '$lastName', '$email', '0', '1', '$curDate', '$password', '0', '$activationHash', 'null')";
                 $db = $this->commonFunctions->getDatabase();
 
@@ -97,7 +97,7 @@ class Registration
                 } else {
                     $data = ['content' => "Oops, there seems to have been an error sending a \n verification email to $email. Please try again!", 'redirect' => '/registration'];
                 }
-            }
+//            }
         }
         $html = $this->renderer->render('Page', $data);
         $this->response->setContent($html);
@@ -158,7 +158,7 @@ class Registration
             if ($result->size() > 0)
             {
                 $user = $result->fetch();
-                if (strcmp($user['activationHash'], $hash) && (intval($user['activated']) == 0))
+                if ($user['activationHash'] == $hash && (intval($user['activated']) == 0))
                 {
                     $sql = "UPDATE User SET activated = 1 WHERE email = '$email'";
                     $db->query($sql);

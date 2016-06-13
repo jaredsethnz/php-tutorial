@@ -1,0 +1,10 @@
+{% extends "Layout.html" %}
+{% block content %}
+
+{% for user in users %}
+
+    {{ user['nickName'] }} {{ user['email'] }}<br>
+
+{% endfor %}
+
+{% endblock %}
