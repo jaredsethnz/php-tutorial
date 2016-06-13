@@ -1,0 +1,48 @@
+{% extends "Layout.html" %}
+{% block content %}
+
+<form name="profile" enctype="multipart/form-data" action="/profile" method="POST">
+    <img id="preview" src="#" alt="Profile Image" width="150" height="150"/><br>
+    <input type="file" name="photo" id="photo" size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26"><br/>
+
+    <label>Nickname: {{ nickname }}</label><br>
+    <label>First Name: {{ firstname }}</label><br>
+    <label>Last Name: {{ lastname }}</label><br>
+    <label>Email: {{ email }}</label><br>
+    <label>Challengeable: </label>
+
+    {% if challengeable == 1 %}
+        <input type="radio" name="challengeable" value="0"> No
+        <input type="radio" name="challengeable" value="1" checked> Yes
+    {% else %}
+        <input type="radio" name="challengeable" value="0" checked> No
+        <input type="radio" name="challengeable" value="1"> Yes
+    {% endif %}
+    <br>
+    <label>Rank: </label>
+    {% for i in 1..rank %}
+        *
+    {% endfor %}
+    <br>
+    <input type="submit" class="button" name="Submit" value="Submit">
+    &nbsp;&nbsp;<input type="reset" class="button" value="Cancel">
+</form>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#photo").change(function(){
+        readURL(this);
+    });
+</script>
+{{ content }}
+{% endblock %}

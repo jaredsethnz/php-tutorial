@@ -17,7 +17,7 @@ class ArrayMenuReader implements MenuReader
                 ['href' => '/', 'text' => 'Homepage'],
                 ['href' => '/page-one', 'text' => 'Page One'],
                 ['href' => '/page-two', 'text' => 'Page Two'],
-                ['href' => '/page-three', 'text' => 'Page Three'],
+                ['href' => '/profile', 'text' => 'Profile'],
                 ['href' => '/logout', 'text' => 'Logout'],
             ];
         }
@@ -27,7 +27,7 @@ class ArrayMenuReader implements MenuReader
                 ['href' => '/', 'text' => 'Homepage'],
                 ['href' => '/page-one', 'text' => 'Page One'],
                 ['href' => '/page-two', 'text' => 'Page Two'],
-                ['href' => '/page-three', 'text' => 'Page Three'],
+                ['href' => '/profile', 'text' => 'Profile'],
                 ['href' => '/login', 'text' => 'Login'],
             ];
         }

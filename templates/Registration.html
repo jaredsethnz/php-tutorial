@@ -17,16 +17,46 @@
     <input type="password" name="passwordConfirmation" id="passwordConfirmation"><br>
     <input type="submit" value="Submit">
 </form>
-
-<script type="text/javascript" src="scripts/jquery.validate.js"></script>
-<script type="text/javascript" src="scripts/jquery.extend.js"></script>
 <script>
     $( "#registerForm" ).validate({
         rules: {
             password: "required",
             passwordConfirmation: {
                 equalTo: "#password"
+            },
+            email: {// compound rule
+                required: true,
+                email: true,
+                remote:{
+                    url: "/registration/checkemail",
+                    type: "post",
+                    data:
+                    {
+                        function()
+                        {
+                            return $("#email").val();
+                        }
+                    }
+                }
+            },
+            'nickname': {
+                required: true,
+                remote:{
+                    url: "/registration/checknickname",
+                    type: "post",
+                    data:
+                    {
+                        function()
+                        {
+                            return $("#nickname").val();
+                        }
+                    }
+                }
             }
+        },
+        messages: {
+            email: { remote: "Email already used"},
+            'nickname': {remote: "Nickname already used"}
         }
     });
 </script>

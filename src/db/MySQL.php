@@ -91,8 +91,8 @@ class MySQL
 
     function execute ( $sql ) {
         if (!$queryResource = mysqli_query($this->dbConn, $sql)) {
-            throw new exception (
-                'Query Failed: ' . mysqli_error ($this->dbConn ) . ' SQL: ' . $sql );
+            throw new exception ( 'Query Failed: ' . mysqli_error ($this->dbConn ) . ' SQL: ' . $sql );
+            return false;
         }
         return new MySQLResult( $this, $queryResource ) ;
     }

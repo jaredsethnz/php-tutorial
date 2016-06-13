@@ -90,11 +90,7 @@ function nonLoggedInRoutes(Request $request)
             return true;
         case '/registration/checkemail':
             return true;
-        case '/registration/checkemail':
-            return true;
-        case '/registration/checkpass':
-            return true;
-        case  '/registration/checkusername':
+        case  '/registration/checknickname':
             return true;
         default:
             return false;

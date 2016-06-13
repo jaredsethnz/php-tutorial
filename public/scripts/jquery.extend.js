@@ -11,7 +11,7 @@ jQuery.extend(jQuery.validator.messages, {
     number: "Please enter a valid number.",
     digits: "Please enter only digits.",
     creditcard: "Please enter a valid credit card number.",
-    equalTo: "Passwords don't matching",
+    equalTo: "Passwords don't match",
     accept: "Please enter a value with a valid extension.",
     maxlength: jQuery.validator.format("Please enter no more than {0} characters"),
     minlength: jQuery.validator.format("Please enter at least {0} characters"),

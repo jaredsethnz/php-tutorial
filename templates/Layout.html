@@ -1,31 +1,33 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Forum</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    {% block javascripts %}
-    <script type="text/javascript" src="scripts/jquery-2.2.4.js"></script>
-    {% endblock %}
-</head>
-<body>
-<div id="layout">
-    <div id="menu">
-        <div class="pure-menu">
-            <ul class="pure-menu-list">
-                {% for item in menuItems %}
-                <li class="pure-menu-item"><a href="{{ item['href'] }}" class="pure-menu-link">{{ item['text'] }}</a></li>
-                {% endfor %}
-            </ul>
+    <head>
+        <meta charset="utf-8">
+        <title>Forum</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+        <link rel="stylesheet" href="/css/style.css">
+        {% block javascripts %}
+        <script type="text/javascript" src="scripts/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="scripts/jquery.validate.js"></script>
+        <script type="text/javascript" src="scripts/jquery.extend.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+    <div id="layout">
+        <div id="menu">
+            <div class="pure-menu">
+                <ul class="pure-menu-list">
+                    {% for item in menuItems %}
+                    <li class="pure-menu-item"><a href="{{ item['href'] }}" class="pure-menu-link">{{ item['text'] }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <div class="content">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
     </div>
-    <div id="main">
-        <div class="content">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
-</div>
-</body>
+    </body>
 </html>

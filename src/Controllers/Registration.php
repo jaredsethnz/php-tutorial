@@ -42,44 +42,33 @@ class Registration
 
     public function validateEmail()
     {
-        $isValid = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-        if ($isValid)
+        $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+
+        $doesntexist = 'false';
+        $db = $this->commonFunctions->getDatabase();
+        $sql = "SELECT * FROM User WHERE email = '$email'";
+        $result = $db->query($sql);
+
+        if ($result->size() == 0)
         {
-            $html = "<span class='status-not-available'>Email valid</span>";
-            $this->response->setContent($html);
+            $doesntexist = 'true';
         }
-        else{
-            $html = "<span class='status-not-available'>Email not valid</span>";
-            $this->response->setContent($html);
-        }
+        $this->response->setContent($doesntexist);
     }
 
     public function validateUsername()
     {
-        $username = filter_input(INPUT_POST, 'username');
-        if ($username)
-        {
-            $html = "Username available";
-            $this->response->setContent($html);
-        }
-        else{
-            $html = "Username already in use";
-            $this->response->setContent($html);
-        }
-    }
+        $username = filter_input(INPUT_POST, 'nickname');
 
-    public function validatePassword()
-    {
-        $password = filter_input(INPUT_POST, 'password');
-        if (!$password || strlen($password) < 8)
+        $doesntexist = 'false';
+        $db = $this->commonFunctions->getDatabase();
+        $sql = "SELECT * FROM User WHERE nickName = '$username'";
+        $result = $db->query($sql);
+        if ($result->size() == 0)
         {
-            $html = "Password must be at least 8 characters long";
-            $this->response->setContent($html);
+            $doesntexist = 'true';
         }
-        else{
-            $html = "Password valid";
-            $this->response->setContent($html);
-        }
+        $this->response->setContent($doesntexist);
     }
 
     public function signup()
@@ -97,18 +86,17 @@ class Registration
             $activationHash = password_hash($this->generateRandomString(), PASSWORD_DEFAULT, ['cost' => 12]);
             $curDate = date('Y-d-m');
 
-            $sql = "INSERT INTO User VALUES('null', '$nickName', '$firstName', '$lastName', '$email', '0', '1', '$curDate', '$password', '0', '$activationHash', 'null')";
-            $db = $this->commonFunctions->getDatabase();
-            $db->query($sql);
+            if ($this->validateEmail($email) && $this->validateUsername($nickName)) {
+                $sql = "INSERT INTO User VALUES('null', '$nickName', '$firstName', '$lastName', '$email', '0', '1', '$curDate', '$password', '0', '$activationHash', 'null')";
+                $db = $this->commonFunctions->getDatabase();
 
-            $emailSent = $this->emailVerification($email, $nickName,$activationHash);
-            if ($emailSent)
-            {
-                $data = [ 'content' => "Verification email sent to $email.\n Follow the link in the email to activate your account!", 'redirect' => '/login' ];
-            }
-            else
-            {
-                $data = [ 'content' => "Oops, there seems to have been an error sending a \n verification email to $email. Please try again!", 'redirect' => '/registration' ];
+                $emailSent = $this->emailVerification($email, $nickName, $activationHash);
+                if ($emailSent) {
+                    $db->execute($sql);
+                    $data = ['content' => "Verification email sent to $email.\n Follow the link in the email to activate your account!", 'redirect' => '/login'];
+                } else {
+                    $data = ['content' => "Oops, there seems to have been an error sending a \n verification email to $email. Please try again!", 'redirect' => '/registration'];
+                }
             }
         }
         $html = $this->renderer->render('Page', $data);
@@ -122,12 +110,13 @@ class Registration
         $mailer->isSMTP();
         $mailer->Host = 'smtp.gmail.com';
         $mailer->SMTPAuth = true;
-        $mailer->Username = 'indiecornerserver@gmail.com';
-        $mailer->Password = 'Jar3dG0mbert99';
+        $mailer->Username = 'indiecornerservices@gmail.com';
+        $mailer->Password = 'Jar3dS3th';
         $mailer->SMTPSecure = 'ssl';
         $mailer->Port = 465;
+        $mailer->SMTPDebug = 4;
 
-        $mailer->setFrom('indiecornerserver@gmail.com', 'SuperSudoku');
+        $mailer->setFrom('indiecornerservices@gmail.com', 'SuperSudoku');
         $mailer->addAddress($email);
 
         $mailer->Subject = 'Account Activation | Email Confirmation';
@@ -156,7 +145,7 @@ class Registration
 
     public function accountActivation()
     {
-        $data = [];
+        $data = [ 'content' => 'Invalid link!' ];
         $params = $this->request->getParameters();
         if ((isset($params['email']) && isset($params['hash'])))
         {
@@ -169,20 +158,16 @@ class Registration
             if ($result->size() > 0)
             {
                 $user = $result->fetch();
-                if ($user['activationHash'] == $hash && $user['activated'] == 0)
+                if (strcmp($user['activationHash'], $hash) && (intval($user['activated']) == 0))
                 {
                     $sql = "UPDATE User SET activated = 1 WHERE email = '$email'";
                     $db->query($sql);
                     $data = [ 'content' => "Account $email has been activated!" ];
                 }
-                elseif ($user['activationHash'] == $hash && $user['activated'] == 1)
+                elseif (strcmp($user['activationHash'], $hash) && (intval($user['activated']) === 1))
                 {
                     $data = [ 'content' => "Account $email already activated!" ];
                 }
-            }
-            else
-            {
-                $data = [ 'content' => 'Invalid link!' ];
             }
         }
 

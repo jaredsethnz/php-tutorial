@@ -17,7 +17,8 @@
     "nikic/fast-route": ">=1.0.0",
     "rdlowrey/auryn": ">=1.2.0",
     "twig/twig": ">=1.0.0",
-    "phpmailer/phpmailer": ">=5.2"
+    "phpmailer/phpmailer": ">=5.2",
+    "eventviva/php-image-resize": ">=1.5.4"
   },
   "autoload": {
     "psr-4": {

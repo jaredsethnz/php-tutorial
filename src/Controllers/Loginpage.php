@@ -54,27 +54,21 @@ class Loginpage
             $db = $this->commonFunctions->getDatabase();
             $result = $db->query($sql);
 
-            if ($result->size() > 0 && $result['activated'] != 0)
+            if ($result->size() > 0)
             {
                 $result = $result->fetch();
-                $hash = $result['password'];
-                if (password_verify($pass, $hash) == true)
-                {
-                    $_SESSION['loggedin'] = true;
-                    $_SESSION['userID'] = $result['userID'];
-                    $_SESSION['nickName'] = $result['nickName'];
-                    $data = [ 'content' => 'Welcome back '.$_SESSION['nickName'].'!', 'redirect' => 'Homepage' ];
-                }
-                else
-                {
-                    $data = [ 'content' => 'Invalid nickname, password combination!', 'redirect' => 'Loginpage' ];
+                if (intval($result['activated']) != 0) {
+                    $hash = $result['password'];
+                    if (password_verify($pass, $hash) == true) {
+                        $_SESSION['loggedin'] = true;
+                        $_SESSION['userID'] = $result['userID'];
+                        $_SESSION['nickName'] = $result['nickName'];
+                        $data = ['content' => 'Welcome back ' . $_SESSION['nickName'] . '!', 'redirect' => 'Homepage'];
+                    }
                 }
             }
         }
-        else
-        {
-            $data = [ 'content' => 'Invalid nickname, password combination!', 'redirect' => 'Loginpage' ];
-        }
+
         $html = $this->renderer->render($data['redirect'], $data);
         $this->response->setContent($html, true);
     }
