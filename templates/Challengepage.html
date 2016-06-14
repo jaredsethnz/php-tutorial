@@ -1,10 +1,11 @@
 {% extends "Layout.html" %}
 {% block content %}
 
-{% for user in users %}
 
-    {{ user['nickName'] }} {{ user['email'] }}<br>
-
-{% endfor %}
+<ul class="pure-menu-list">
+    {% for link in links %}
+    <li class="pure-menu-item"><a href="{{ link['href'] }}" class="pure-menu-link">{{ link['text'] }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}

@@ -51,7 +51,7 @@ class Profilepage
                 'email' => $result['email'],
                 'challengeable' => intval($result['challengeable']),
                 'rank' => intval($result['rank']),
-                'profilepic' => $result['profilePic'] == 'null' ? 'images/profileImages/default.jpg' : ($result['profilePic'])
+                'profilepic' => empty($result['profilePic']) ? 'images/profileImages/default.jpg' : ($result['profilePic'])
             ];
         }
 

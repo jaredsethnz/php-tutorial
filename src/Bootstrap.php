@@ -60,7 +60,6 @@ else
             $response->setStatusCode(405);
             break;
         case \FastRoute\Dispatcher::FOUND:
-            //var_dump(include ('LoginAuthenticator.php'));
             $className = $routeInfo[1][0];
             $method = $routeInfo[1][1];
             $vars = $routeInfo[2];

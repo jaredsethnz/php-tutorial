@@ -81,5 +81,6 @@ class Loginpage
         session_unset();
         $html = $this->renderer->render('Page', $data);
         $this->response->setContent($html);
+        header( "refresh:2;url=/" );
     }
 }

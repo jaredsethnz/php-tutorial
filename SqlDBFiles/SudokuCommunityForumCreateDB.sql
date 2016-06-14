@@ -28,21 +28,21 @@ create table SudokuBoard(
 
 create table ChallengeApproval(
 	challengeApprovalID int primary key auto_increment,
-    userID int not null,
+    challengerNickName varchar(25) not null,
     duration int not null,
     boardSize char(3) not null,
     difficulty tinyint not null,
     challengeApproved boolean default null,
-    foreign key (userID) references User (userID)
+    foreign key (challengerNickName) references User (nickName)
 );
 
 create table UserChallengeApproval(
-	challengeApprovalID int auto_increment,
-    userID int not null,
+	challengeApprovalID int,
+    userNickName varchar(25) not null,
     userApproval boolean default null,
-    primary key (challengeApprovalID, userID),
+    primary key (challengeApprovalID, userNickName),
     foreign key (challengeApprovalID) references ChallengeApproval (challengeApprovalID),
-    foreign key (userID) references User (userID)
+    foreign key (userNickName) references User (nickName)
 );
 
 create table ActiveChallenge(
@@ -54,45 +54,45 @@ create table ActiveChallenge(
 );
 
 create table UserActiveChallenge(
-	activeChallengeID int auto_increment,
-    userID int not null,
+	activeChallengeID int,
+    userNickName varchar(25) not null,
     completionTime time,
-    primary key(activeChallengeID, userID),
+    primary key(activeChallengeID, userNickName),
     foreign key (activeChallengeID) references ActiveChallenge (activeChallengeID),
-    foreign key (userID) references User (userID)
+    foreign key (userNickName) references User (nickName)
 );
 
 create table ChallengeHistory(
 	challengeHistoryID int primary key auto_increment,
     boardID int not null,
     dateArchived date not null,
-    userID int not null,
+    winnerNickName varchar(25) not null,
     foreign key (boardID) references SudokuBoard (boardID),
-    foreign key (userID) references User (userID)
+    foreign key (winnerNickName) references User (nickName)
 );
 
 create table UserChallengeHistory(
 	challengeHistoryID int auto_increment,
-    userID int not null,
+    userNickName varchar(25) not null,
     finishingNumber smallInt default 0,
-    primary key (challengeHistoryID, userID),
+    primary key (challengeHistoryID, userNickName),
     foreign key (challengeHistoryID) references ChallengeHistory (challengeHistoryID),
-    foreign key (userID) references User (userID)
+    foreign key (userNickName) references User (nickName)
 );
 
 create table DeclinedChallenge(
 	declinedChallengeID int primary key auto_increment,
     dateDeclined date not null,
-    challengerUserID int not null
+    challengerNickName varchar(25) not null
 );
 
 create table UserDeclinedChallenge(
 	declinedChallengeID int auto_increment,
-    userID int not null,
+    challengerNickName varchar(25) not null,
     declined boolean default false,
-    primary key (declinedChallengeID, userID),
+    primary key (declinedChallengeID, challengerNickName),
     foreign key (declinedChallengeID) references DeclinedChallenge (declinedChallengeID),
-    foreign key (userID) references User (userID)
+    foreign key (challengerNickName) references User (nickName)
 );
 
 create table Category(

@@ -114,7 +114,7 @@ class Registration
         $mailer->Password = 'Jar3dS3th';
         $mailer->SMTPSecure = 'ssl';
         $mailer->Port = 465;
-        $mailer->SMTPDebug = 4;
+        //$mailer->SMTPDebug = 4;
 
         $mailer->setFrom('indiecornerservices@gmail.com', 'SuperSudoku');
         $mailer->addAddress($email);
