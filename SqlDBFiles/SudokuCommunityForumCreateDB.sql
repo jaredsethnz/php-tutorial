@@ -57,6 +57,7 @@ create table UserActiveChallenge(
 	activeChallengeID int,
     userNickName varchar(25) not null,
     completionTime time,
+    forfeited boolean default false,
     primary key(activeChallengeID, userNickName),
     foreign key (activeChallengeID) references ActiveChallenge (activeChallengeID),
     foreign key (userNickName) references User (nickName)

@@ -19,10 +19,14 @@
                 <td>{{ actv['opponents'] }}</td>
                 <td>{{ actv['timeleft'] }}</td>
                 <td>
+                    {% if actv['forfeited'] == 0 %}
                     <form action="/challengemanagementff" method="POST">
                         <input type="hidden" name="forfeitId" value="{{ actv['activeChallengeID'] }}">
                         <input type="submit" name="Forfeit" value="Forfeit" >
                     </form>
+                    {% else %}
+                        You have forfeited this challenge
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
@@ -85,11 +89,15 @@
                         <td>{{ pend['opponents'] }}</td>
                         <td>{{ pend['duration'] }}</td>
                         <td>
+                            {% if pend['userApproval'] == 0 %}
                             <form action="/challengemanagementad" method="POST">
                                 <input type="hidden" name="pendingId" value="{{ pend['challengeApprovalID'] }}">
                                 <input type="submit" name="Accept" value="Accept" >
                                 <input type="submit" name="Decline" value="Decline" >
                             </form>
+                            {% else %}
+                            Pending other players approval
+                            {% endif %}
                         </td>
                     </tr>
                 {% endfor %}

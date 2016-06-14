@@ -16,6 +16,7 @@ insert into SudokuBoard values ( null, "9x9", "5", "44444444444444444444" );
 # SudokuForum :: Create new challenges waiting for approved by added players
 insert into ChallengeApproval values ( null, "EinsteinAtWork", 2, "9x9", 5, null );
 set @challengeApprovalID = ( select last_insert_id() );
+insert into UserChallengeApproval values ( @challengeApprovalID, "EinsteinAtWork", 1 );
 insert into UserChallengeApproval values ( @challengeApprovalID, "CatSurpreme", null );
 insert into UserChallengeApproval values ( @challengeApprovalID, "GamerGod", null );
 

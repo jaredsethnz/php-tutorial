@@ -36,7 +36,7 @@ class Challengepage
     public function show()
     {
         $data['links'] = [
-            ['href' => '/', 'text' => 'New Challenge'],
+            ['href' => '/newchallenge', 'text' => 'New Challenge'],
             ['href' => '/challengemanagement', 'text' => 'Manage Challenges'],
         ];
 
@@ -44,15 +44,21 @@ class Challengepage
         $this->response->setContent($html);
     }
 
+    public function newChallenge()
+    {
+        $data = [];
+        $html = $this->renderer->render('ChallengeNewpage', $data);
+        $this->response->setContent($html);
+    }
+
     public function manageChallenges()
     {
         $data = [];
         $nick = $_SESSION['nickName'];
-        $userID = $_SESSION['userID'];
 
         //********************************************************
         // Collect results for all challenges awaiting approval...
-        $sqlPending = "select ChallengeApproval.challengeApprovalID, challengerNickName, rank, group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', concat_ws(' ', duration, 'Day(s)') as 'duration'
+        $sqlPending = "select ChallengeApproval.challengeApprovalID, ( case when challengerNickName = '$nick' then 'You' else challengerNickName end ) as 'challengerNickName', rank, group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', concat_ws(' ', duration, 'Day(s)') as 'duration', userApproval
                 from UserChallengeApproval
                 inner join ChallengeApproval on
                 UserChallengeApproval.challengeApprovalID = ChallengeApproval.challengeApprovalID
@@ -68,6 +74,11 @@ class Challengepage
         $count = 0;
         while ($row = $result->fetch_assoc())
         {
+            $challengeId = $row['challengeApprovalID'];
+            $sqlApproved = "select userApproval from UserChallengeApproval where challengeApprovalID = '$challengeId' and userNickName = '$nick'";
+            $resultApproved = $db->execute($sqlApproved);
+            $resultApproved = $resultApproved->fetch();
+            $row['userApproval'] = $resultApproved['userApproval'];
             $challengePending['PC'.$count] = $row;
             $count++;
         }
@@ -98,7 +109,7 @@ class Challengepage
 
         //*********************************************
         // Collect results for all active challenges...
-        $sqlActive = "select ActiveChallenge.activeChallengeID, group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', concat_ws( ' ', dateEnd - dateStart, 'Day(s)' ) as 'timeleft' from UserActiveChallenge
+        $sqlActive = "select ActiveChallenge.activeChallengeID, group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', concat_ws( ' ', dateEnd - dateStart, 'Day(s)' ) as 'timeleft', forfeited from UserActiveChallenge
                     inner join ActiveChallenge on
                     UserActiveChallenge.activeChallengeID = ActiveChallenge.activeChallengeID
                     where UserActiveChallenge.activeChallengeID in ( select UserActiveChallenge.activeChallengeID from UserActiveChallenge where userNickName = '$nick' ) group by UserActiveChallenge.activeChallengeID";
@@ -110,6 +121,11 @@ class Challengepage
         $count = 0;
         while ($row = $result->fetch_assoc())
         {
+            $challengeId = $row['activeChallengeID'];
+            $sqlApproved = "select forfeited from UserActiveChallenge where activeChallengeID = '$challengeId' and userNickName = '$nick'";
+            $resultForfeited = $db->execute($sqlApproved);
+            $resultForfeited = $resultForfeited->fetch();
+            $row['forfeited'] = $resultForfeited['forfeited'];
             $challengeActive['AC'.$count] = $row;
             $count++;
         }
@@ -119,18 +135,14 @@ class Challengepage
         $this->response->setContent($html);
     }
 
-    public function newChallenge()
-    {
-
-    }
-
     public function acceptDeclineChallenge()
     {
         $params = $this->request->getParameters();
         $nick = $_SESSION['nickName'];
         $challengeId = $params['pendingId'];
-        $userID = $_SESSION['userID'];
 
+        //*************************************************
+        // Modify a challenge if it is declined or accepted
         if (isset($params['Accept']))
         {
             $this->response->setContent('ACCEPT');
@@ -144,9 +156,11 @@ class Challengepage
             $action = 'declined';
         }
 
+        $storedProc = "call deleteApprovedChallenges()";
         $db = $this->commonFunctions->getDatabase();
         if ($db->execute($sql))
         {
+            $db->execute($storedProc);
             $data['content'] = 'Challenge ' . $action;
         }
         else
@@ -161,7 +175,26 @@ class Challengepage
 
     public function forfeitedChallenge()
     {
-        var_dump($this->request->getParameters()['forfeitId']);
+        $params = $this->request->getParameters();
+        $nick = $_SESSION['nickName'];
+        $challengeId = $params['forfeitId'];
+        $data['content'] = 'Error forfeiting challenge, please try again!';
+
+        if (isset($params['Forfeit']))
+        {
+            $sql = "update UserActiveChallenge set forfeited = '1', completionTime = '0' where userNickName = '$nick' and activeChallengeID = '$challengeId'";
+            $storedProc = "call deleteFinishedChallenges()";
+            $db = $this->commonFunctions->getDatabase();
+            $result = $db->execute($sql);
+            $db->execute($storedProc);
+            if ($result)
+            {
+                $data['content'] = 'Challenge forfeited.';
+            }
+        }
+
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
         header( "refresh:1;url=/challengemanagement" );
     }
 }

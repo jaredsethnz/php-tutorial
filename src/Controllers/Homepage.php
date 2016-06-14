@@ -33,8 +33,6 @@ class Homepage
 
     public function show()
     {
-        $db = $this->commonFunctions->getDatabase();
-        $message = '';
         if (isset($_SESSION['nickName']))
         {
             $message = 'Welcome back, '.$_SESSION['nickName'].'!';

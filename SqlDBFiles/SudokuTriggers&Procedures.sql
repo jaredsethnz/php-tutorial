@@ -49,7 +49,6 @@ set @randomBoardID = ( select boardID from SudokuBoard where boardSize = old.boa
 insert into ActiveChallenge values ( null, @randomBoardID, now(), now() + interval old.duration day, false );
 
 set @activeChallengeID = ( select last_insert_id() );
-insert into UserActiveChallenge ( activeChallengeID, userNickName, completionTime ) values ( @activeChallengeID, old.challengerNickName, null );
 insert into UserActiveChallenge ( activeChallengeID, userNickName, completionTime )
 select @activeChallengeID, userNickName, null from UserChallengeApproval where challengeApprovalID = old.challengeApprovalID;
 
@@ -59,7 +58,6 @@ if ( new.challengeApproved = false ) then
 
 insert into DeclinedChallenge ( declinedChallengeID, challengerNickName, dateDeclined ) values ( null, old.challengerNickName, now() );
 set @activeChallengeID = ( select last_insert_id() );
-insert into UserDeclinedChallenge ( declinedChallengeID, challengerNickName, declined ) values ( @activeChallengeID, old.challengerNickName, false );
 insert into UserDeclinedChallenge ( declinedChallengeID, challengerNickName, declined )
 select @activeChallengeID, userNickName, ( case when userApproval = true then false else true end ) from UserChallengeApproval where challengeApprovalID = old.challengeApprovalID;
 
