@@ -38,14 +38,14 @@
         <table border="1px">
             <thead>
                 <tr>
-                    <th colspan="5">HISTORY</th>
+                    <th colspan="6">HISTORY</th>
                 </tr>
                 <tr>
                     <th>Opponent(s)</th>
                     <th>Date Archived</th>
                     <th>Board Size</th>
                     <th>Difficulty</th>
-                    <th>Outcome</th>
+                    <th>Winner</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,7 +55,7 @@
                 <td>{{ hist['dateArchived'] }}</td>
                 <td>{{ hist['boardSize'] }}</td>
                 <td>{{ hist['difficulty'] }}</td>
-                <td>{{ hist['outcome'] }}</td>
+                <td>{{ hist['winner'] }}</td>
             </tr>
             {% endfor %}
             </tbody>

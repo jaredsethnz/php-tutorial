@@ -33,6 +33,26 @@ class Async
         $this->commonFunctions = $cf;
     }
 
+    public function memberAutoComplete()
+    {
+        $method = $this->request->getMethod();
+        if ($method == 'POST') {
+            $params = $this->request->getParameters();
+            $searchNick = $params['term'];
+            $sql = "SELECT nickName FROM User WHERE nickName LIKE '$searchNick%'";
+            $db = $this->commonFunctions->getDatabase();
+            $result = $db->query($sql);
+            $userNicks = [];
+            if ($result) {
+                $result = $result->fetchResult();
+                while ($row = $result->fetch_assoc()) {
+                    $userNicks[] = $row['nickName'];
+                }
+            }
+            $this->response->setContent(json_encode($userNicks));
+        }
+    }
+
     public function memberSearch()
     {
         $method = $this->request->getMethod();

@@ -6,6 +6,12 @@ insert into User values ( null, "CatSurpreme", "Jimmy", "Jones", "jimmyjones@bru
 insert into User values ( null, "EinsteinAtWork", "Jason", "Shiv", "einstein@work.com", "1", 4, "2014-8-20", "$2y$12$BGEvHX1sHoAOof.v2oaxZ.4Uvd7sn0Fx341SNEkh2ejDuFPqOkLxu", "1", "$2y$12$UmwxrDGvfK0K1WdmM8eoJe.h6oyNP9TehNLCLhn/GWXDKOskPiwja", null);
 insert into User values ( null, "GamerGod", "Paul", "Jones", "gamergod@work.com", "1", 3, "2011-8-20", "$2y$12$BGEvHX1sHoAOof.v2oaxZ.4Uvd7sn0Fx341SNEkh2ejDuFPqOkLxu", "1", "$2y$12$UmwxrDGvfK0K1WdmM8eoJe.h6oyNP9TehNLCLhn/GWXDKOskPiwja", null);
 
+# SudokuForum :: Creating new forum categories
+insert into Category values ('How to play?');
+insert into Category values ('How to challenge another member?');
+insert into Category values ('Best strategy for larger boards');
+insert into Category values ('Updates');
+
 # SudokuForum :: Creating new Sudoku boards
 insert into SudokuBoard values ( null, "9x9", "5", "00000000000000000000" );
 insert into SudokuBoard values ( null, "9x9", "5", "11111111111111111111" );
@@ -48,3 +54,4 @@ select * from ChallengeHistory;
 select * from UserChallengeHistory;
 select * from DeclinedChallenge;
 select * from UserDeclinedChallenge;
+select * from SudokuBoard;

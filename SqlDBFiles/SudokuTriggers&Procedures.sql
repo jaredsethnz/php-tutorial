@@ -96,7 +96,7 @@ begin
 
 if ( new.challengeFinished = true ) then
 
-	set @winner = ( select IFNULL(( select userNickName from UserActiveChallenge where activeChallengeID = '1' and forfeited = '0' order by completionTime asc limit 1),'All Forfeited') );
+	set @winner = ( select IFNULL(( select userNickName from UserActiveChallenge where activeChallengeID = old.activeChallengeID and forfeited = '0' order by completionTime asc limit 1),'All Forfeited') );
 	insert into ChallengeHistory ( challengeHistoryID, boardID, dateArchived, winnerNickName )
 	values ( null, old.boardID, now(), @winner );
 	

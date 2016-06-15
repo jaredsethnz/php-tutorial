@@ -21,7 +21,7 @@ create table User(
 
 create table SudokuBoard(
 	boardID int primary key auto_increment,
-    boardSize char(3) not null,
+    boardSize varchar(6) not null,
     difficulty tinyint not null,
     boardValues varchar(160)
 );

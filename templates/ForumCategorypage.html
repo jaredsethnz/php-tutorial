@@ -1,0 +1,25 @@
+{% extends "Layout.html" %}
+{% block content %}
+
+<table>
+    <tbody>
+
+        {% for category in categories %}
+        {% set loopIndex = loop.index0 %}
+        <tr>
+           <td colspan="3">{{ category }}</td>
+        </tr>
+            {% for thread in threads[loopIndex] %}
+                <tr>
+                    <td>{{ thread }}</td>
+                    <td>{{ thread }}</td>
+                    <td>{{ thread }}</td>
+                    <td>{{ thread }}</td>
+                    <td>{{ thread }}</td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

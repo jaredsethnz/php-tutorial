@@ -3,7 +3,7 @@
 <div>
     <form action="/async/membersearch" id="search" method="POST">
         <label>Nickname: </label>
-        <input type="text" name="searchNick" required>
+        <input type="text" name="searchNick" id="searchNick" required>
         <input type="submit" name="Submit" value="Search">
     </form>
 </div>
@@ -128,5 +128,36 @@
             return true;
         });
     });
+
+    $('#searchNick').autocomplete({
+        source: function (request, response) {
+            $.ajax({
+                type: "POST",
+                url:"/async/memberautocomplete",
+                data: request,
+                success: response,
+                dataType: 'json'
+            });
+        },
+        autoFocus: true,
+        minLength: 1,
+        delay: 100
+    });
+
+//    $('#searchNick').keyup( function(e) {
+//        var data = $(this).serialize();
+//        $.ajax({
+//            type : 'POST',
+//            url  : '/async/memberautocomplete',
+//            data : data,
+//            success :  function(data)
+//            {
+//                //$("#searchresults").html(data);
+//                alert(data);
+//            }
+//        });
+//        return false;
+//
+//    });
 </script>
 {% endblock %}

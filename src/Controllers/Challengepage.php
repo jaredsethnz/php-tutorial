@@ -116,7 +116,7 @@ class Challengepage
 
         //*********************************************
         // Collect results for all challenge history...
-        $sqlHistory = "select group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', dateArchived, boardSize, difficulty, ( case when winnerNickName = '$nick' then 'Win' else 'Loss' end ) as 'outcome'
+        $sqlHistory = "select group_concat( ( case when userNickName = '$nick' then 'You' else userNickName end ) separator ', ' ) as 'opponents', dateArchived, boardSize, ( case difficulty when 4 then 'Easy' when 5 then 'Normal' else 'Hard' end) as 'difficulty', ( case when winnerNickName = '$nick' then 'You' else winnerNickName end ) as 'winner'
                     from UserChallengeHistory 
                     inner join ChallengeHistory on
                     UserChallengeHistory.challengeHistoryID = ChallengeHistory.challengeHistoryID

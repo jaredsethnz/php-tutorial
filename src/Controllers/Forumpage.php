@@ -35,26 +35,11 @@ class Forumpage
 
     public function show()
     {
-        $data = [ 'content' => 'THIS IS THE FORUM!!!' ];
-        $nick = $_SESSION['nickName'];
-        $userID = $_SESSION['userID'];
-        $sql = "SELECT * FROM User WHERE nickName = '$nick' AND userID = '$userID'";
-        $db = $this->commonFunctions->getDatabase();
-        //$result = $db->query($sql);
-//        if ($result->size() > 0) {
-//            $result = $result->fetch();
-//            $data = [
-//                'nickname' => $result['nickName'],
-//                'firstname' => $result['firstName'],
-//                'lastname' => $result['lastName'],
-//                'email' => $result['email'],
-//                'challengeable' => intval($result['challengeable']),
-//                'rank' => intval($result['rank']),
-//                'profilepic' => $result['profilePic'] == 'null' ? 'images/profileImages/default.jpg' : ($result['profilePic'])
-//            ];
-//        }
 
-        $html = $this->renderer->render('Forumpage', $data);
+        $data['categories'] = [ 'one', 'two', 'three', 'four', 'five'];
+        $data['threads'] = [ [1, 2, 3, 4, 5], [1, 2, 3], [1, 2], [1, 4, 5], [6, 4, 3, 6] ];
+
+        $html = $this->renderer->render('ForumCategorypage', $data);
         $this->response->setContent($html);
     }
 }

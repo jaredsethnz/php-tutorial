@@ -27,4 +27,5 @@ return [
     ['POST', '/profile', ['Forum\Controllers\Profilepage', 'saveChanges']],
     ['GET', '/{slug}', ['Forum\Controllers\Page', 'show']],
     ['POST', '/async/membersearch', ['Forum\Controllers\Async', 'memberSearch']],
+    ['POST', '/async/memberautocomplete', ['Forum\Controllers\Async', 'memberAutoComplete']],
 ];
