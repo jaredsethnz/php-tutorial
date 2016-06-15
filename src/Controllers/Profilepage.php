@@ -79,10 +79,11 @@ class Profilepage
                 exit;
             }
             $image = new ImageResize($filePath);
-            $image->resizeToBestFit(150, 150, true);
+            $image->resize(150, 150, true);
             $image->save($filePath);
 
             $nick = $_SESSION['nickName'];
+            $_SESSION['profilePic'] = $filePath;
             $sql = "UPDATE user SET profilePic = '$filePath' WHERE nickName = '$nick'";
             $db = $this->commonFunctions->getDatabase();
             $result = $db->execute($sql);

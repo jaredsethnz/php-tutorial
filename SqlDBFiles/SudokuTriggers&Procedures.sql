@@ -44,8 +44,8 @@ begin
 set @approvalID = old.challengeApprovalID;
 
 if ( new.challengeApproved = true ) then
-
-set @randomBoardID = ( select boardID from SudokuBoard where boardSize = old.boardSize and difficulty = old.difficulty order by rand() limit 1 );
+insert into SudokuBoard values(null, old.boardSize, old.difficulty, null);
+set @randomBoardID = ( select last_insert_id() );
 insert into ActiveChallenge values ( null, @randomBoardID, now(), now() + interval old.duration day, false );
 
 set @activeChallengeID = ( select last_insert_id() );
@@ -96,7 +96,7 @@ begin
 
 if ( new.challengeFinished = true ) then
 
-	set @winner = ( select userNickName from UserActiveChallenge where activeChallengeID = old.activeChallengeID order by completionTime asc limit 1 );
+	set @winner = ( select IFNULL(( select userNickName from UserActiveChallenge where activeChallengeID = '1' and forfeited = '0' order by completionTime asc limit 1),'All Forfeited') );
 	insert into ChallengeHistory ( challengeHistoryID, boardID, dateArchived, winnerNickName )
 	values ( null, old.boardID, now(), @winner );
 	

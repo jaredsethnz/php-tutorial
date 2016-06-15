@@ -23,7 +23,7 @@ create table SudokuBoard(
 	boardID int primary key auto_increment,
     boardSize char(3) not null,
     difficulty tinyint not null,
-    boardValues varchar(81) not null unique key
+    boardValues varchar(160)
 );
 
 create table ChallengeApproval(
@@ -68,8 +68,7 @@ create table ChallengeHistory(
     boardID int not null,
     dateArchived date not null,
     winnerNickName varchar(25) not null,
-    foreign key (boardID) references SudokuBoard (boardID),
-    foreign key (winnerNickName) references User (nickName)
+    foreign key (boardID) references SudokuBoard (boardID)
 );
 
 create table UserChallengeHistory(

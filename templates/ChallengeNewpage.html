@@ -1,9 +1,9 @@
 {% extends "Layout.html" %}
 {% block content %}
 <div>
-    <form action="" method="POST">
+    <form action="/async/membersearch" id="search" method="POST">
         <label>Nickname: </label>
-        <input type="text" required>
+        <input type="text" name="searchNick" required>
         <input type="submit" name="Submit" value="Search">
     </form>
 </div>
@@ -16,10 +16,117 @@
             </th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="searchresults">
 
         </tbody>
     </table>
 </div>
+<div>
+    <table>
+        <tr id="profilePicVs">
+            <td><img src="{{ profilePic }}" width="100px" height="100px"></td>
+        </tr>
+        <tr id="nickNameVs">
+            <td>{{ nickName }}</td>
+        </tr>
+    </table>
+    <span id="maxMemberAlert"></span>
+    <br>
+    <form action="/newchallenge" id="newChallenge" method="POST">
+        <input type="hidden" name="membersToChallenge" value="{{ nickName }}" id="membersToChallenge">
+        <input type="hidden" name="memberCount" value="1" id="memberCount">
 
+        <label>Board Size: </label>
+        <input type="radio" name="boardSize" value="4" checked>
+        <label>4x4</label>
+        <input type="radio" name="boardSize" value="6">
+        <label>6x6</label>
+        <input type="radio" name="boardSize" value="9">
+        <label>9x9</label>
+        <input type="radio" name="boardSize" value="12">
+        <label>12x12</label><br>
+
+        <label>Difficulty: </label>
+        <input type="radio" name="difficulty" value="4" checked>
+        <label>Easy</label>
+        <input type="radio" name="difficulty" value="5">
+        <label>Normal</label>
+        <input type="radio" name="difficulty" value="6">
+        <label>Hard</label><br>
+
+        <label>Duration: </label>
+        <input type="radio" name="duration" value="1" checked>
+        <label>1 Day</label>
+        <input type="radio" name="duration" value="2">
+        <label>2 Day</label>
+        <input type="radio" name="duration" value="3">
+        <label>3 Day</label><br>
+
+        <input type="submit" name="Submit" value="Send">
+        <input type="reset" name="Reset" value="Reset">
+    </form>
+</div>
+<script>
+    $(document).ready(function()
+    {
+        $(document).on('submit', '#search', function()
+        {
+            var data = $(this).serialize();
+            $.ajax({
+                type : 'POST',
+                url  : '/async/membersearch',
+                data : data,
+                success :  function(data)
+                {
+                    $("#searchresults").html(data);
+                }
+            });
+            return false;
+        });
+
+        $(document).on('submit', '.challengeUserForm', function()
+        {
+            $("#maxMemberAlert").html("");
+            var memberCount = $('input:hidden[id=memberCount]').val();
+            if (parseInt(memberCount) < 3) {
+                var userNickName = $('input:hidden[name=userNickName]').val();
+                var profilePic = $('input:hidden[name=profilePic]').val();
+                var selectedUsers = $('input:hidden[id=membersToChallenge]').val();
+                var selectedUsersNicks = selectedUsers.split(',');
+                if ($.inArray(userNickName, selectedUsersNicks) === -1) {
+
+                    var profilePicVs = $('#profilePicVs').clone().html();
+                    profilePicVs += "<td> VS. </td><td><img src=" + profilePic + " width='100px' height='100px'></td>";
+
+                    var nickNameVs = $('#nickNameVs').clone().html();
+                    nickNameVs += "<td></td><td>" + userNickName + "</td>";
+
+                    $("#profilePicVs").html(profilePicVs);
+                    $("#nickNameVs").html(nickNameVs);
+                    $("#memberCount").val(parseInt(memberCount) + 1);
+                    selectedUsers += "," + userNickName;
+                    $("#membersToChallenge").val(selectedUsers);
+                }
+                else
+                {
+                    $("#maxMemberAlert").html("* Member already added to challenge.");
+                }
+            }
+            else
+            {
+                $("#maxMemberAlert").html("* Max challenge opponents reached, click cancel to clear selections.");
+            }
+
+            return false;
+        });
+
+        $(document).on('reset', '#newChallenge', function()
+        {
+            $("#profilePicVs").html('<td><img src="{{ profilePic }}" width="100px" height="100px"></td>');
+            $("#nickNameVs").html('<td>{{ nickName }}</td>');
+
+            return true;
+        });
+    });
+</script>
 {% endblock %}

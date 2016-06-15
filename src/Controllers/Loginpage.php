@@ -63,6 +63,7 @@ class Loginpage
                         $_SESSION['loggedin'] = true;
                         $_SESSION['userID'] = $result['userID'];
                         $_SESSION['nickName'] = $result['nickName'];
+                        $_SESSION['profilePic'] = $result['profilePic'];
                         $data = ['content' => 'Welcome back ' . $_SESSION['nickName'] . '!', 'redirect' => 'Homepage'];
                     }
                 }

@@ -46,9 +46,39 @@ class Challengepage
 
     public function newChallenge()
     {
-        $data = [];
+        $data['id'] = $_SESSION['userID'];
+        $data['nickName'] = $_SESSION['nickName'];
+        $data['profilePic'] = (empty($_SESSION['profilePic']) ? 'images/profileImages/default.jpg' : $_SESSION['profilePic']);
         $html = $this->renderer->render('ChallengeNewpage', $data);
         $this->response->setContent($html);
+    }
+
+    public function sendChallenge()
+    {
+        $params = $this->request->getParameters();
+        $nick = $_SESSION['nickName'];
+        $userNickNames = explode(',', $params['membersToChallenge']);
+        $boardSize = $params['boardSize'] . 'x' . $params['boardSize'];
+        $difficulty = $params['difficulty'];
+        $duration = $params['duration'];
+
+        $db = $this->commonFunctions->getDatabase();
+
+        $sql = "INSERT INTO ChallengeApproval VALUES(null, '$nick', '$duration', '$boardSize', '$difficulty', null)";
+        $result = $db->execute($sql);
+        $challengeId = $result->insertID();
+        for ($i = 0; $i < count($userNickNames); $i++)
+        {
+            $approved = ($userNickNames[$i] == $nick ? 1 : 0);
+            $sql = "INSERT INTO UserChallengeApproval VALUES('$challengeId', '$userNickNames[$i]', '$approved')";
+            $db->execute($sql);
+
+        }
+
+        $data['content'] = 'Challenge sent!';
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
+        header( "refresh:2;url=/challengemanagement" );
     }
 
     public function manageChallenges()
