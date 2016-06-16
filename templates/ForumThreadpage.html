@@ -1,4 +1,82 @@
 {% extends "Layout.html" %}
 {% block content %}
-{{ content }}
+    {% for key,post in posts %}
+    <table border="1px">
+        <thead>
+        <tr>
+            <th>
+
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    {{ post.nickName }}
+                </td>
+                <td>
+                    {{ post.postContent }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <button type="button" class="reply" id="btn{{ post.postID }}" value="{{ post.postID }}">reply</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                <div id="div{{ post.postID }}" style="display: none">
+                    <h3>Reply</h3>
+                    <form class="replyForm" action="/forum/reply" method="POST">
+                        <input type="hidden" name="threadID" value="{{ threadID }}">
+                        <input type="hidden" name="postID" value="{{ post.postID }}">
+                        <textarea type="text" name="replyContent" required></textarea><br>
+                        <input type="submit" name="Submit" value="Submit">
+                        <button type="button" class="cancel" value="{{ post.postID }}">cancel</button>
+                    </form>
+                </div>
+                </td>
+            </tr>
+        {% for reply in replies[key] %}
+            <tr>
+                <td>
+                    ->
+                </td>
+                <td>
+                    {{ reply.nickName }}
+                </td>
+                <td>
+                    {{ reply.replyContent }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table><br>
+    {% endfor %}
+<div>
+    <h3>Post</h3>
+    <form id="postForm" action="" method="POST">
+        <input type="hidden" value="{{ post.postID }}">
+        <textarea type="text" name="replyContent" required></textarea><br>
+        <input type="submit" name="Submit" value="Submit">
+    </form>
+</div>
+<script>
+    $(document).ready(function(){
+        $('.reply').click(function(){
+            var btnVal = $(this).attr('value');
+            $(this).css('display', 'none');
+            $('#div' + btnVal).show();
+        });
+
+        $('.cancel').click(function(){
+            var btnVal = $(this).attr('value');
+            $('#btn' + btnVal).show();
+            $('#div' + btnVal).hide();
+        });
+    });
+
+    $(".replyForm").validate();
+    $("#postForm").validate();
+</script>
 {% endblock %}

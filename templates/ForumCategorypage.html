@@ -1,25 +1,41 @@
 {% extends "Layout.html" %}
 {% block content %}
 
-<table>
+<table border="1px">
     <tbody>
 
-        {% for category in categories %}
-        {% set loopIndex = loop.index0 %}
+        {% for key, category in categories %}
         <tr>
-           <td colspan="3">{{ category }}</td>
+           <th colspan="3">{{ category.categoryName }}</th>
         </tr>
-            {% for thread in threads[loopIndex] %}
+            {% for thread in threads[key] %}
                 <tr>
-                    <td>{{ thread }}</td>
-                    <td>{{ thread }}</td>
-                    <td>{{ thread }}</td>
-                    <td>{{ thread }}</td>
-                    <td>{{ thread }}</td>
+                    <td><a href="/forum/{{ thread.threadID }}" >{{ thread.title }}</a></td>
+                    <td>{{ thread.lastPost }}</td>
+                    <td>Created on: {{ thread.threadDate }}, by: {{ thread.nickName }}</td>
                 </tr>
             {% endfor %}
         {% endfor %}
     </tbody>
 </table>
-
+<div>
+    <h3>Create new Thread</h3>
+    <form action="" id="newThreadForm" method="POST">
+        <input type="hidden" value="{{ category.categoryName }}">
+        <label>Category: </label>
+        <select name="categoryName" required>
+            {% for category in categories %}
+                <option value="{{ category.categoryName }}">{{ category.categoryName }}</option>
+            {% endfor %}
+        </select>
+        <label>New thread name: </label>
+        <input type="text" name="newThreadName" maxlength="50" required><br>
+        <label>Post</label><br>
+        <textarea name="post" maxlength="300" required></textarea><br>
+        <input type="submit" name="Submit" value="Add thread">
+    </form>
+</div>
+<script>
+    $("#newThreadForm").validate();
+</script>
 {% endblock %}

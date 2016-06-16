@@ -63,3 +63,8 @@ where challengeApprovalID = 2
 and userApproval is null
 group by challengeApprovalID;
 
+# SudokuForum ::
+# SudokuForum :: Get Thread last post information
+SELECT IFNULL((SELECT concat('Last post on ', postDate, ', by ', nickName) as 'lastPost' FROM Post where threadID = '6' ORDER BY postDate DESC LIMIT 1), 'No posts...');
+
+

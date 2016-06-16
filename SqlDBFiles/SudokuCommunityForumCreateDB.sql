@@ -102,29 +102,29 @@ create table Category(
 create table Thread(
 	threadID int auto_increment not null primary key,
     categoryName varchar(50) not null,
-    userID int not null,
+    nickName varchar(25) not null,
     title varchar(50) not null,
     threadDate date not null,
     foreign key (categoryName) references Category (categoryName),
-    foreign key (userID) references User (userID)
+    foreign key (nickName) references User (nickName)
 );
 
 create table Post(
 	postID int auto_increment not null primary key,
     threadID int not null,
-    userID int not null,
+    nickName varchar(25) not null,
     postContent varchar(300) not null,
-    postDate date not null,
+    postDate timestamp not null,
     foreign key (threadID) references Thread (threadID),
-    foreign key (userID) references User (userID)
+    foreign key (nickName) references User (nickName)
 );
 
 create table Reply(
 	replyID int auto_increment not null primary key,
     postID int not null,
-    userID int not null,
+    nickName varchar(25) not null,
     replyContent varchar(300) not null,
-    replyDate date not null,
+    replyDate timestamp not null,
     foreign key (postID) references Post (postID),
-    foreign key (userID) references User (userID)
+    foreign key (nickName) references User (nickName)
 );
