@@ -18,7 +18,8 @@
         {% endfor %}
     </tbody>
 </table>
-<div>
+<button type="button" id="btnNewThread">New Thread</button>
+<div id="divCreateThread" style="display: none">
     <h3>Create new Thread</h3>
     <form action="" id="newThreadForm" method="POST">
         <input type="hidden" value="{{ category.categoryName }}">
@@ -33,6 +34,7 @@
         <label>Post</label><br>
         <textarea name="post" maxlength="300" required></textarea><br>
         <input type="submit" name="Submit" value="Add thread">
+        <button type="button" id="cancelNewThread">Cancel</button>
     </form>
 </div>
 <script>

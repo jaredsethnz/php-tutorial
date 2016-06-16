@@ -20,6 +20,7 @@ return [
     ['POST', '/forum', ['Forum\Controllers\Forumpage', 'addThread']],
     ['GET', '/forum/{slug}', ['Forum\Controllers\Forumpage', 'showThread']],
     ['POST', '/forum/reply', ['Forum\Controllers\Forumpage', 'addReply']],
+    ['POST', '/forum/post', ['Forum\Controllers\Forumpage', 'addPost']],
     ['GET', '/challenges', ['Forum\Controllers\Challengepage', 'show']],
     ['GET', '/challengemanagement', ['Forum\Controllers\Challengepage', 'manageChallenges']],
     ['POST', '/challengemanagementad', ['Forum\Controllers\ChallengePage', 'acceptDeclineChallenge']],

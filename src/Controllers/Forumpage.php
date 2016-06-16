@@ -76,7 +76,7 @@ class Forumpage
     public function showThread($params)
     {
         $slug = $params['slug'];
-        $sqlPosts = "SELECT * FROM Post WHERE threadID = '$slug'";
+        $sqlPosts = "SELECT postID, threadID, Post.nickName, postContent, postDate, User.challengeable, User.rank, User.profilePic FROM Post  INNER JOIN User on User.nickName = Post.nickName WHERE threadID = '$slug'";
         $db = $this->commonFunctions->getDatabase();
         $resultPosts = $db->query($sqlPosts);
         $resultPosts = $resultPosts->fetchResult();
@@ -87,15 +87,17 @@ class Forumpage
         while ($rowPost = $resultPosts->fetch_assoc())
         {
             $postID = $rowPost['postID'];
-            $sqlReplies = "SELECT * FROM Reply WHERE postID = '$postID'";
+            $sqlReplies = "SELECT replyID, postID, Reply.nickName, replyContent, replyDate, User.challengeable, User.rank, User.profilePic FROM Reply INNER JOIN User on User.nickName = Reply.nickName WHERE postID = '$postID'";
             $resultReply = $db->query($sqlReplies);
             $resultReply = $resultReply->fetchResult();
 
             $replies = [];
             while ($rowReply = $resultReply->fetch_assoc())
             {
+                $rowReply['profilePic'] = empty($rowReply['profilePic']) ? 'images/profileImages/default.jpg' : ($rowReply['profilePic']);
                 array_push($replies, $rowReply);
             }
+            $rowPost['profilePic'] = empty($rowPost['profilePic']) ? 'images/profileImages/default.jpg' : ($rowPost['profilePic']);
             array_push($allReplies, $replies);
             array_push($posts, $rowPost);
             $postCount++;
@@ -137,7 +139,24 @@ class Forumpage
 
     public function addPost()
     {
+        $params = $this->request->getParameters();
+        $nick = $_SESSION['nickName'];
+        $postContent = $params['postContent'];
+        $threadId = $params['threadID'];
 
+        $sql = "INSERT INTO Post VALUES (null, '$threadId', '$nick', '$postContent', current_timestamp())";
+        $db = $this->commonFunctions->getDatabase();
+        $result = $db->execute($sql);
+
+        $data['content'] = 'Error creating new post, please try again..';
+        if ($result)
+        {
+            $data['content'] = 'New post created successfully..';
+        }
+
+        $html = $this->renderer->render('Page', $data);
+        $this->response->setContent($html);
+        header( "refresh:1;url=/forum/".$threadId );
     }
 
     public function addReply()

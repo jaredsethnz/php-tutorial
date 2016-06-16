@@ -2,17 +2,20 @@
 {% block content %}
     {% for key,post in posts %}
     <table border="1px">
-        <thead>
-        <tr>
-            <th>
-
-            </th>
-        </tr>
-        </thead>
         <tbody>
             <tr>
                 <td colspan="2">
-                    {{ post.nickName }}
+                    <img src="../{{ post.profilePic }}" width="65" height="65"><br>
+                    {{ post.nickName }}<br>
+                    {% for i in 1..post.rank %}
+                     <img src="../images/star.png" width="15" height="15">
+                    {% endfor %}
+                    <br>
+                    {% if post.challengeable == 1%}
+                        <a href="">Challenge</a>
+                    {% else %}
+                        Challenge
+                    {% endif %}
                 </td>
                 <td>
                     {{ post.postContent }}
@@ -32,7 +35,7 @@
                         <input type="hidden" name="postID" value="{{ post.postID }}">
                         <textarea type="text" name="replyContent" required></textarea><br>
                         <input type="submit" name="Submit" value="Submit">
-                        <button type="button" class="cancel" value="{{ post.postID }}">cancel</button>
+                        <button type="button" class="cancel" value="{{ post.postID }}">Cancel</button>
                     </form>
                 </div>
                 </td>
@@ -40,10 +43,20 @@
         {% for reply in replies[key] %}
             <tr>
                 <td>
-                    ->
+                    <img src="../images/reply.png" width="50" height="50">
                 </td>
                 <td>
-                    {{ reply.nickName }}
+                    <img src="../{{ reply.profilePic }}" width="45" height="45"><br>
+                    {{ reply.nickName }}<br>
+                    {% for i in 1..reply.rank %}
+                    <img src="../images/star.png" width="15" height="15">
+                    {% endfor %}
+                    <br>
+                    {% if reply.challengeable == 1%}
+                    <a href="">Challenge</a>
+                    {% else %}
+                    Challenge
+                    {% endif %}
                 </td>
                 <td>
                     {{ reply.replyContent }}
@@ -53,30 +66,14 @@
         </tbody>
     </table><br>
     {% endfor %}
-<div>
+<button type="button" id="btnNewPost">New Post</button>
+<div id="divNewPost" style="display: none">
     <h3>Post</h3>
-    <form id="postForm" action="" method="POST">
-        <input type="hidden" value="{{ post.postID }}">
-        <textarea type="text" name="replyContent" required></textarea><br>
+    <form class="postForm" action="/forum/post" method="POST">
+        <input type="hidden" name="threadID" value="{{ threadID }}">
+        <textarea type="text" name="postContent" required></textarea><br>
         <input type="submit" name="Submit" value="Submit">
+        <button type="button" id="cancelNewPost">Cancel</button>
     </form>
 </div>
-<script>
-    $(document).ready(function(){
-        $('.reply').click(function(){
-            var btnVal = $(this).attr('value');
-            $(this).css('display', 'none');
-            $('#div' + btnVal).show();
-        });
-
-        $('.cancel').click(function(){
-            var btnVal = $(this).attr('value');
-            $('#btn' + btnVal).show();
-            $('#div' + btnVal).hide();
-        });
-    });
-
-    $(".replyForm").validate();
-    $("#postForm").validate();
-</script>
 {% endblock %}
