@@ -1,11 +1,18 @@
 {% extends "Layout.html" %}
 {% block content %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-4 vertical-center">
+            {% for link in links %}
+        <div class="col-lg-2" style="background-color: #1c94c4">
 
-<ul class="pure-menu-list">
-    {% for link in links %}
-    <li class="pure-menu-item"><a href="{{ link['href'] }}" class="pure-menu-link">{{ link['text'] }}</a></li>
-    {% endfor %}
-</ul>
+        <a href="{{ link['href'] }}" class="pure-menu-link">{{ link['text'] }}</a>
 
+        </div>
+
+        {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

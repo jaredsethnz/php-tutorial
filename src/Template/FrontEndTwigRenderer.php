@@ -23,9 +23,11 @@ class FrontEndTwigRenderer implements FrontEndRenderer
     public function render($template, $data = [])
     {
         $scriptPath = '../js/';
+        $cssPath = '../css/';
         $data = array_merge($data, [
             'menuItems' => $this->menuReader->readMenu(),
             'scriptPath' => $scriptPath,
+            'cssPath' =>$cssPath,
         ]);
         return $this->renderer->render($template, $data);
     }
