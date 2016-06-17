@@ -7,14 +7,14 @@
 $(document).ready(function(){
     $('.reply').click(function(){
         var btnVal = $(this).attr('value');
-        $(this).css('display', 'none');
-        $('#div' + btnVal).show(500);
+        $('#td' + btnVal).hide(300)
+        $('#tdForm' + btnVal).show(400);
     });
 
     $('.cancel').click(function(){
         var btnVal = $(this).attr('value');
-        $('#btn' + btnVal).show(500);
-        $('#div' + btnVal).hide(500);
+        $('#td' + btnVal).show(400);
+        $('#tdForm' + btnVal).hide(300);
     });
 
     $('#btnNewPost').click(function(){
@@ -27,9 +27,6 @@ $(document).ready(function(){
         $('#divNewPost').hide(500);
     });
 });
-
-$(".replyForm").validate();
-$("#postForm").validate();
 
 //***************************************************************
 // New Challenge Page Script
@@ -115,12 +112,12 @@ $(document).ready(function()
 $(document).ready(function(){
 
     $('#btnNewThread').click(function(){
-        $('#divCreateThread').show(500);
-        $('#btnNewThread').hide(500);
+        $('#divCreateThread').show(200);
+        $('#btnNewThread').hide(200);
     });
 
     $('#cancelNewThread').click(function(){
-        $('#btnNewThread').show(500);
-        $('#divCreateThread').hide(500);
+        $('#btnNewThread').show(200);
+        $('#divCreateThread').hide(200);
     });
 });

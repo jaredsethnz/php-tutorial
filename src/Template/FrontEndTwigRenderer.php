@@ -22,7 +22,7 @@ class FrontEndTwigRenderer implements FrontEndRenderer
 
     public function render($template, $data = [])
     {
-        $scriptPath = '../scripts/';
+        $scriptPath = '../js/';
         $data = array_merge($data, [
             'menuItems' => $this->menuReader->readMenu(),
             'scriptPath' => $scriptPath,
