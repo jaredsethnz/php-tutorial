@@ -108,7 +108,7 @@ class Async
         $html = "";
         if ($challengeable)
         {
-            $html .= "<form class='challengeUserForm' method='POST'><input type='hidden' name='userId' value=".$id."><input type='hidden' name='userNickName' value=".$nick."><input type='hidden' name='profilePic' value=".$pic."><input type='submit' name='Submit' value='Challenge'></form>";
+            $html .= "<form class='challengeUserForm' method='POST'><input type='hidden' name='userId' value=".$id."><input type='hidden' name='userNickName' value=".$nick."><input type='hidden' name='profilePic' value=".$pic."><input type='submit' class='btn btn-default' name='Submit' value='Challenge'></form>";
         }
         else
         {

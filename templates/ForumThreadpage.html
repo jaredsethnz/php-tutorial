@@ -2,10 +2,13 @@
 {% block content %}
 <div class="container">
     <div class="col-md-offset-2 col-md-8">
+        <div class="voffset8 vboffset">
+            <h4 class="forumBackgroundColor pad15 borderRadius10">{{ posts[0].title }}</h4>
+        </div>
         {% for key,post in posts %}
-        <table class="table tab-content voffset8">
+        <table class="table table-borderless tab-content voffset2 vboffset2 forumBackgroundColor borderRadius10">
             <tbody>
-                <tr class="active">
+                <tr>
                     <td colspan="2"  class="text-center" style="width: 5%">
                         <img src="../{{ post.profilePic }}" width="65" height="65"><br>
                         {{ post.nickName }}<br>
@@ -23,8 +26,8 @@
                         {{ post.postContent }}
                     </td>
                 </tr>
-                <tr class="active">
-                    <td id="td{{ post.postID }}" colspan="3" class="active text-right">
+                <tr>
+                    <td id="td{{ post.postID }}" colspan="3" class="vboffset text-right">
                         <button type="button" class="reply btn btn-sm" id="btn{{ post.postID }}" value="{{ post.postID }}">Reply</button>
                     </td>
                 </tr>
@@ -41,12 +44,16 @@
                         </form>
                     </td>
                 </tr>
+                </tbody>
+            </table>
+        <table class="table table-borderless tab-content forumReplyBackgroundColor voffset vboffset3 borderRadius10">
+            <tbody>
             {% for reply in replies[key] %}
-                <tr class="active">
-                    <td class="content" style="width: 1%">
+                <tr class="voffset">
+                    <td style="width: 1%">
                         <img src="../images/reply.png" class="text-center" width="30" height="30">
                     </td>
-                    <td class="text-center">
+                    <td class="text-center" style="width: 1%">
                         <img src="../{{ reply.profilePic }}" width="45" height="45"><br>
                         {{ reply.nickName }}<br>
                             {% for i in 1..reply.rank %}
@@ -68,13 +75,15 @@
         </table>
         {% endfor %}
         <button type="button" class="btn btn-success" id="btnNewPost">New Post</button>
-        <div id="divNewPost" class="form-group" style="display: none">
-            <form class="postForm" action="/forum/post" method="POST">
-                <input type="hidden" name="threadID" value="{{ threadID }}">
-                <textarea type="text" name="postContent"  class="form-control"  placeholder="Enter post here..." required></textarea><br>
-                <input type="submit" class="btn btn-success" name="Submit" value="Submit">
-                <button type="button" class="btn btn-primary" id="cancelNewPost">Cancel</button>
-            </form>
+        <div class="forumBackgroundColor borderRadius10">
+            <div id="divNewPost" class="form-group pad15" style="display: none">
+                <form class="postForm" action="/forum/post" method="POST">
+                    <input type="hidden" name="threadID" value="{{ threadID }}">
+                    <textarea type="text" name="postContent"  class="form-control"  placeholder="Enter post here..." required></textarea><br>
+                    <input type="submit" class="btn btn-success" name="Submit" value="Submit">
+                    <button type="button" class="btn btn-primary" id="cancelNewPost">Cancel</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

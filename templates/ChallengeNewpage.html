@@ -1,69 +1,74 @@
 {% extends "Layout.html" %}
 {% block content %}
-<div>
-    <form action="/async/membersearch" id="search" method="POST">
-        <label>Nickname: </label>
-        <input type="text" name="searchNick" id="searchNick" required>
-        <input type="submit" name="Submit" value="Search">
-    </form>
-</div>
-<div>
-    <table border="1px">
-        <thead>
-        <tr>
-            <th colspan="3">
-                Results
-            </th>
-        </tr>
-        </thead>
-        <tbody id="searchresults">
+<div class="container">
+    <div class="row voffset6">
+        <div class="col-lg-offset-3 col-lg-6 forumBackgroundColor borderRadius10 pad30">
+            <div>
+                <form action="/async/membersearch" id="search" method="POST">
+                    <label for="searchNick">Nickname: </label>
+                    <input type="text" name="searchNick" class="form-control" id="searchNick" required>
+                    <div class="text-right">
+                        <input type="submit" class="btn btn-default voffset2" name="Submit" value="Search">
+                    </div>
+                </form>
+            </div>
+            <div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th colspan="3" class="">
+                            Results
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="searchresults">
 
-        </tbody>
-    </table>
-</div>
-<div>
-    <table>
-        <tr id="profilePicVs">
-            <td><img src="{{ profilePic }}" width="100px" height="100px"></td>
-        </tr>
-        <tr id="nickNameVs">
-            <td>{{ nickName }}</td>
-        </tr>
-    </table>
-    <span id="maxMemberAlert"></span>
-    <br>
-    <form action="/newchallenge" id="newChallenge" method="POST">
-        <input type="hidden" name="membersToChallenge" value="{{ nickName }}" id="membersToChallenge">
-        <input type="hidden" name="memberCount" value="1" id="memberCount">
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <table class="table table-borderless">
+                    <tr id="profilePicVs">
+                        <td><img src="{{ profilePic }}" width="100px" height="100px"></td>
+                    </tr>
+                    <tr id="nickNameVs">
+                        <td>{{ nickName }}</td>
+                    </tr>
+                </table>
+                <span id="maxMemberAlert"></span>
+                <hr>
+                <br>
+                <form action="/newchallenge" id="newChallenge" method="POST">
+                    <input type="hidden" name="membersToChallenge" value="{{ nickName }}" id="membersToChallenge">
+                    <input type="hidden" name="memberCount" value="1" id="memberCount">
+                        <div class="form-group">
+                            <label class="radio-inline">Board Size: </label>
+                            <label class="radio-inline"><input type="radio"  class="form-control" name="boardSize" value="4" checked>4x4</label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="boardSize" value="6">6x6</label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="boardSize" value="9">9x9</label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="boardSize" value="12">12x12</label><br>
+                        </div>
 
-        <label>Board Size: </label>
-        <input type="radio" name="boardSize" value="4" checked>
-        <label>4x4</label>
-        <input type="radio" name="boardSize" value="6">
-        <label>6x6</label>
-        <input type="radio" name="boardSize" value="9">
-        <label>9x9</label>
-        <input type="radio" name="boardSize" value="12">
-        <label>12x12</label><br>
+                        <div class="form-group">
+                            <label class="radio-inline">Difficulty: </label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="difficulty" value="4" checked>Easy</label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="difficulty" value="5">Normal</label>
+                            <label class="radio-inline"><input type="radio" class="form-control" name="difficulty" value="6">Hard</label>
+                        </div>
 
-        <label>Difficulty: </label>
-        <input type="radio" name="difficulty" value="4" checked>
-        <label>Easy</label>
-        <input type="radio" name="difficulty" value="5">
-        <label>Normal</label>
-        <input type="radio" name="difficulty" value="6">
-        <label>Hard</label><br>
-
-        <label>Duration: </label>
-        <input type="radio" name="duration" value="1" checked>
-        <label>1 Day</label>
-        <input type="radio" name="duration" value="2">
-        <label>2 Day</label>
-        <input type="radio" name="duration" value="3">
-        <label>3 Day</label><br>
-
-        <input type="submit" name="Submit" value="Send">
-        <input type="reset" name="Reset" value="Reset">
-    </form>
+                        <div class="form-group">
+                            <label class="radio-inline">Duration:</label>
+                            <label class="radio-inline"><input type="radio" name="duration" value="1" checked>1 Day</label>
+                            <label class="radio-inline"><input type="radio" name="duration" value="2">2 Day</label>
+                            <label class="radio-inline"><input type="radio" name="duration" value="3">3 Day</label>
+                        </div>
+                    <div class="text-right">
+                        <input type="submit" class="btn btn-default" name="Submit" value="Send">
+                        <input type="reset" class="btn btn-default" name="Reset" value="Reset">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

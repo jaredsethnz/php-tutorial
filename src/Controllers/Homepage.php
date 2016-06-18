@@ -35,11 +35,11 @@ class Homepage
     {
         if (isset($_SESSION['nickName']))
         {
-            $message = 'Welcome back, '.$_SESSION['nickName'].'!';
+            $message = 'Welcome back, '.$_SESSION['nickName'];
         }
         else
         {
-            $message = 'Discuss - Challenge - Play';
+            $message = '';
         }
         $data = [
             'content' => $message,

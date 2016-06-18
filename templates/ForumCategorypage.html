@@ -1,16 +1,15 @@
 {% extends "Layout.html" %}
 {% block content %}
-<div style="width: 100%; height:100%" class="overlayTransparent">
 <div class="container">
-    <table class="table col-md-12 voffset8">
+    <table class="table table-borderless col-md-12 voffset8 navcolor borderRadius10 pad15">
         <tbody>
 
             {% for key, category in categories %}
-            <tr class="active">
+            <tr>
                <th colspan="3">{{ category.categoryName }}</th>
             </tr>
                 {% for thread in threads[key] %}
-                    <tr class="active">
+                    <tr class="active borderRadius10 pad15">
                         <td><a href="/forum/{{ thread.threadID }}" >{{ thread.title }}</a></td>
                         <td>{{ thread.lastPost }}</td>
                         <td>Created on {{ thread.threadDate }}, by {{ thread.nickName }}</td>
@@ -39,7 +38,6 @@
         </form>
     </div>
 </div>
-    </div>
 <script>
     $("#newThreadForm").validate();
 </script>

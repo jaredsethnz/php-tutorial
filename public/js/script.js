@@ -7,24 +7,26 @@
 $(document).ready(function(){
     $('.reply').click(function(){
         var btnVal = $(this).attr('value');
-        $('#td' + btnVal).hide(300)
-        $('#tdForm' + btnVal).show(400);
+        $('#td' + btnVal).hide(0)
+        $('#tdForm' + btnVal).show(250);
     });
 
     $('.cancel').click(function(){
         var btnVal = $(this).attr('value');
-        $('#td' + btnVal).show(400);
-        $('#tdForm' + btnVal).hide(300);
+        $('#td' + btnVal).show(0);
+        $('#tdForm' + btnVal).hide(0);
     });
 
     $('#btnNewPost').click(function(){
-        $('#divNewPost').show(500);
-        $('#btnNewPost').hide(500);
+        $('#divNewPost').show(250);
+        $('#btnNewPost').hide(250);
+        $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+        return false;
     });
 
     $('#cancelNewPost').click(function(){
-        $('#btnNewPost').show(500);
-        $('#divNewPost').hide(500);
+        $('#btnNewPost').show(250);
+        $('#divNewPost').hide(250);
     });
 });
 

@@ -1,16 +1,21 @@
 {% extends "Layout.html" %}
 {% block content %}
 
-<div class="container">
+<div class="container voffset8">
     <div class="row">
-        <div class="col-lg-offset-4 vertical-center">
+        <div class="vertical-center">
             {% for link in links %}
-        <div class="col-lg-2" style="background-color: #1c94c4">
-
-        <a href="{{ link['href'] }}" class="pure-menu-link">{{ link['text'] }}</a>
-
-        </div>
-
+            <div class="col-md-6 col-lg-6 text-center borderRadius10">
+                <a href="{{ link['href'] }}">
+                    <div>
+                        <img src="../images/medal.png">
+                        <br>
+                        <br>
+                        <br>
+                        <span class="h3 dunkinFont textColor">{{ link['text'] }}</span>
+                    </div>
+                </a>
+            </div>
         {% endfor %}
         </div>
     </div>

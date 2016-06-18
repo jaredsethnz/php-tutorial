@@ -76,7 +76,7 @@ class Forumpage
     public function showThread($params)
     {
         $slug = $params['slug'];
-        $sqlPosts = "SELECT postID, threadID, Post.nickName, postContent, postDate, User.challengeable, User.rank, User.profilePic FROM Post  INNER JOIN User on User.nickName = Post.nickName WHERE threadID = '$slug'";
+        $sqlPosts = "SELECT postID, Post.threadID, Post.nickName, postContent, postDate, Thread.title, User.challengeable, User.rank, User.profilePic FROM Post  INNER JOIN Thread on  Thread.threadID = Post.threadID INNER JOIN User on User.nickName = Post.nickName WHERE Post.threadID = '$slug'";
         $db = $this->commonFunctions->getDatabase();
         $resultPosts = $db->query($sqlPosts);
         $resultPosts = $resultPosts->fetchResult();
@@ -87,7 +87,7 @@ class Forumpage
         while ($rowPost = $resultPosts->fetch_assoc())
         {
             $postID = $rowPost['postID'];
-            $sqlReplies = "SELECT replyID, postID, Reply.nickName, replyContent, replyDate, User.challengeable, User.rank, User.profilePic FROM Reply INNER JOIN User on User.nickName = Reply.nickName WHERE postID = '$postID'";
+            $sqlReplies = "SELECT replyID, postID, Reply.nickName, replyContent, replyDate, User.challengeable, User.rank, User.profilePic FROM Reply INNER JOIN User on User.nickName = Reply.nickName WHERE postID = '$postID' ORDER BY replyDate ASC";
             $resultReply = $db->query($sqlReplies);
             $resultReply = $resultReply->fetchResult();
 

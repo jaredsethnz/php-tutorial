@@ -1,22 +1,41 @@
 {% extends "Layout.html" %}
 {% block content %}
-
-<form action="/registration" method="post" id="registerForm">
-    <input type="hidden" name="extra" id="extra">
-    <label for="firstName">First Name</label><br>
-    <input type="text" name="firstName" id="firstName" required><br>
-    <label for="lastName">Last Name</label><br>
-    <input type="text" name="lastName" id="lastName" required><br>
-    <label for="email">Email</label><br>
-    <input type="email" name="email" id="email" required><br>
-    <label for="nickname">Nickname</label><br>
-    <input type="text" name="nickname" id="nickname" required></span><br>
-    <label for="password">Password</label><br>
-    <input type="password" name="password" id="password" minlength="8" required></span><br>
-    <label for="passwordConfirmation">Password Confirmation</label><br>
-    <input type="password" name="passwordConfirmation" id="passwordConfirmation"><br>
-    <input type="submit" value="Submit">
-</form>
+<div class="container">
+    <div class="row vertical-center">
+        <div class="col-lg-offset-4 col-lg-4 borderRadius10 navcolor pad15">
+        <form action="/registration" method="post" id="registerForm">
+            <input type="hidden" name="extra" id="extra">
+            <div class="form-group fieldContainer">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" class="form-control" id="firstName" maxlength="25" required>
+            </div>
+            <div class="form-group fieldContainer">
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" class="form-control" id="lastName" maxlength="25" required>
+            </div>
+            <div class="form-group fieldContainer">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" maxlength="45" required>
+            </div>
+            <div class="form-group fieldContainer">
+                <label for="nickname">Nickname</label>
+                <input type="text" name="nickname" class="form-control" id="nickname" maxlength="25" required>
+            </div>
+            <div class="form-group fieldContainer">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" minlength="8" required>
+            </div>
+            <div class="form-group fieldContainer">
+                <label for="passwordConfirmation">Password Confirmation</label>
+                <input type="password" name="passwordConfirmation" class="form-control" id="passwordConfirmation">
+            </div>
+            <div class="text-right voffset2">
+                <input type="submit" class="btn btn-default voffset2" value="Submit">
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
 <script>
     $( "#registerForm" ).validate({
         rules: {
@@ -57,7 +76,13 @@
         messages: {
             email: { remote: "Email already used"},
             'nickname': {remote: "Nickname already used"}
-        }
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
     });
 </script>
 {% endblock %}

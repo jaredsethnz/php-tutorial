@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{{ cssPath }}bootstrap.css">
         <link rel="stylesheet" href="{{ cssPath }}full-slider.css">
         <link rel="stylesheet" href="{{ cssPath }}custom-styles.css">
+        <link rel="stylesheet" type="text/css" href="{{ cssPath }}tooltipster.bundle.css" />
 
         {% block javascripts %}
         <script type="text/javascript" src="{{ scriptPath }}jquery-2.2.4.js"></script>
@@ -18,6 +19,7 @@
         <script type="text/javascript" src="{{ scriptPath }}jquery.extend.js"></script>
         <script type="text/javascript" src="{{ scriptPath }}script.js"></script>
         <script type="text/javascript" src="{{ scriptPath }}bootstrap.js"></script>
+        <script type="text/javascript" src="{{ scriptPath }}tooltipster.bundle.js"></script>
         {% endblock %}
     </head>
     <body>
@@ -30,11 +32,12 @@
                 </ul>
                 </nav>
         </div>
-
-                {% block content %}
-                {% endblock %}
+        <div id="main" class="full-size">
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
-    <footer>
-
+    <footer class="footer navcolor text-center pad10 footerText">
+        <span>Copyright &copy; Super Sudoku <script>document.write(new Date().getFullYear())</script></span>
     </footer>
 </html>
