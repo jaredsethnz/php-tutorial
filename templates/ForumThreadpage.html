@@ -5,7 +5,7 @@
         {% for key,post in posts %}
         <table class="table tab-content voffset8">
             <tbody>
-                <tr>
+                <tr class="active">
                     <td colspan="2"  class="text-center" style="width: 5%">
                         <img src="../{{ post.profilePic }}" width="65" height="65"><br>
                         {{ post.nickName }}<br>
@@ -23,8 +23,8 @@
                         {{ post.postContent }}
                     </td>
                 </tr>
-                <tr>
-                    <td id="td{{ post.postID }}" colspan="3" class="text-right">
+                <tr class="active">
+                    <td id="td{{ post.postID }}" colspan="3" class="active text-right">
                         <button type="button" class="reply btn btn-sm" id="btn{{ post.postID }}" value="{{ post.postID }}">Reply</button>
                     </td>
                 </tr>
@@ -49,15 +49,15 @@
                     <td class="text-center">
                         <img src="../{{ reply.profilePic }}" width="45" height="45"><br>
                         {{ reply.nickName }}<br>
-                        {% for i in 1..reply.rank %}
-                        <img src="../images/star.png" width="15" height="15">
-                        {% endfor %}
-                        <br>
-                        {% if reply.challengeable == 1%}
-                        <a href="">Challenge</a>
-                        {% else %}
-                        Challenge
-                        {% endif %}
+                            {% for i in 1..reply.rank %}
+                                <img src="../images/star.png" width="15" height="15">
+                            {% endfor %}
+                            <br>
+                            {% if reply.challengeable == 1%}
+                                <a href="">Challenge</a>
+                            {% else %}
+                            Challenge
+                            {% endif %}
                     </td>
                     <td>
                         {{ reply.replyContent }}
@@ -65,7 +65,7 @@
                 </tr>
             {% endfor %}
             </tbody>
-        </table><br>
+        </table>
         {% endfor %}
         <button type="button" class="btn btn-success" id="btnNewPost">New Post</button>
         <div id="divNewPost" class="form-group" style="display: none">
