@@ -4,6 +4,7 @@
 }
 
 .textColor { color: whitesmoke; }
+.textColorRed { color: darkred; }
 
 .textWelcome { font-weight: 500; }
 
@@ -22,12 +23,15 @@
 .forumReplyBackgroundColor { background-color: lightgrey; }
 
 .vertical-center {
-    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-    min-height: 75vh; /* These two lines are counted as one :-)       */
+    min-height: 100%;
+    min-height: 75vh;
 
     display: flex;
     align-items: center;
 }
+
+.borderTop { border-top: 1px; }
+.borderBottom { border-bottom: 1px; }
 
 .full-size { min-height: 100%; padding: 20px; }
 
@@ -80,16 +84,22 @@ a:active {
     margin-bottom: 0px;
 }
 
-.borderRadius10 { border-radius: 10px; }
+.borderRadius10 { border-radius: 5px; }
 
 .footerText { font-weight: 300; font-size: small; }
 
+.hrThin { size: 2px; }
+
+.pad0 { padding: 0px; }
 .pad10 { padding: 10px; }
 .pad15 { padding: 15px; }
 .pad30 { padding: 30px; }
 
 .padWidth15 { padding-left: 15px; padding-right: 15px; }
 .padWidth30 { padding-left: 30px; padding-right: 30px; }
+
+.padLeft30 { padding-left: 30px; }
+.padRight30 { padding-right: 30px; }
 
 .margin0 { margin: 0px; }
 .margin15 { margin: 15px; }
@@ -133,4 +143,24 @@ label.error {
 .fieldContainer {
     position: relative;
     margin-bottom: 20px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
 }

@@ -36,7 +36,7 @@ class Challengepage
     public function show()
     {
         $data['links'] = [
-            ['href' => '/newchallenge', 'text' => 'New Challenge'],
+            ['href' => '/newchallenge', 'text' => 'Challenge Members'],
             ['href' => '/challengemanagement', 'text' => 'Manage Challenges'],
         ];
 
@@ -62,20 +62,29 @@ class Challengepage
         $difficulty = $params['difficulty'];
         $duration = $params['duration'];
 
+        var_dump($userNickNames);
         $db = $this->commonFunctions->getDatabase();
 
         $sql = "INSERT INTO ChallengeApproval VALUES(null, '$nick', '$duration', '$boardSize', '$difficulty', null)";
         $result = $db->execute($sql);
         $challengeId = $result->insertID();
-        for ($i = 0; $i < count($userNickNames); $i++)
-        {
-            $approved = ($userNickNames[$i] == $nick ? 1 : 0);
-            $sql = "INSERT INTO UserChallengeApproval VALUES('$challengeId', '$userNickNames[$i]', '$approved')";
-            $db->execute($sql);
+        $approved = 1;
+        $sql = "INSERT INTO UserChallengeApproval VALUES('$challengeId', '$nick', '$approved')";
+        $result = $db->execute($sql);
+        if ($result) {
+            for ($i = 1; $i < count($userNickNames); $i++) {
+                $approved = 0;
+                $sql = "INSERT INTO UserChallengeApproval VALUES('$challengeId', '$userNickNames[$i]', '$approved')";
+                $db->execute($sql);
 
+            }
+            $data['content'] = 'Challenge sent!';
+        }
+        else
+        {
+            $data['content'] = 'Error sending, challenge please try again!';
         }
 
-        $data['content'] = 'Challenge sent!';
         $html = $this->renderer->render('Page', $data);
         $this->response->setContent($html);
         header( "refresh:2;url=/challengemanagement" );
@@ -85,6 +94,27 @@ class Challengepage
     {
         $data = [];
         $nick = $_SESSION['nickName'];
+
+        //*********************************************
+        // Collect results for all declined challenge history...
+        $sqlHistory = "select group_concat( ( case when UserDeclinedChallenge.challengerNickName = '$nick' then 'You' else UserDeclinedChallenge.challengerNickName end ) separator ', ' ) as 'opponents', dateDeclined, group_concat( (case when UserDeclinedChallenge.declined = true then UserDeclinedChallenge.challengerNickName else '' end ) separator '' ) as declinedBy, ( case when DeclinedChallenge.challengerNickName = '$nick' then 'You' else DeclinedChallenge.challengerNickName end ) as challengerNickName
+                    from UserDeclinedChallenge 
+                    inner join DeclinedChallenge on
+                    UserDeclinedChallenge.declinedChallengeID = DeclinedChallenge.declinedChallengeID
+                    where UserDeclinedChallenge.declinedChallengeID in ( select declinedChallengeID from UserDeclinedChallenge where challengerNickName = '$nick' )
+                    group by UserDeclinedChallenge.declinedChallengeID";
+
+        $db = $this->commonFunctions->getDatabase();
+        $result = $db->query($sqlHistory);
+        $result = $result->fetchResult();
+        $challengeHistory = [];
+        $count = 0;
+        while ($row = $result->fetch_assoc())
+        {
+            $challengeHistory['DC'.$count] = $row;
+            $count++;
+        }
+        $data['declined'] = $challengeHistory;
 
         //********************************************************
         // Collect results for all challenges awaiting approval...
@@ -213,9 +243,9 @@ class Challengepage
         if (isset($params['Forfeit']))
         {
             $sql = "update UserActiveChallenge set forfeited = '1', completionTime = '0' where userNickName = '$nick' and activeChallengeID = '$challengeId'";
-            $storedProc = "call deleteFinishedChallenges()";
             $db = $this->commonFunctions->getDatabase();
             $result = $db->execute($sql);
+            $storedProc = "call deleteFinishedChallenges()";
             $db->execute($storedProc);
             if ($result)
             {

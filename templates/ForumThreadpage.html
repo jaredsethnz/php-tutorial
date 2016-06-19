@@ -2,11 +2,11 @@
 {% block content %}
 <div class="container">
     <div class="col-md-offset-2 col-md-8">
-        <div class="voffset8 vboffset">
-            <h4 class="forumBackgroundColor pad15 borderRadius10">{{ posts[0].title }}</h4>
+        <div class="voffset2 vboffset">
+            <h4 class="textColor fontSizeLarge">{{ posts[0].title }}</h4>
         </div>
         {% for key,post in posts %}
-        <table class="table table-borderless tab-content voffset2 vboffset2 forumBackgroundColor borderRadius10">
+        <table class="table table-borderless tab-content voffset vboffset2 forumBackgroundColor borderRadius10">
             <tbody>
                 <tr>
                     <td colspan="2"  class="text-center" style="width: 5%">
@@ -46,7 +46,7 @@
                 </tr>
                 </tbody>
             </table>
-        <table class="table table-borderless tab-content forumReplyBackgroundColor voffset vboffset3 borderRadius10">
+        <table class="table table-borderless tab-content forumReplyBackgroundColor voffset vboffset2 borderRadius10">
             <tbody>
             {% for reply in replies[key] %}
                 <tr class="voffset">

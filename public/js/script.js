@@ -44,6 +44,7 @@ $(document).ready(function()
             success :  function(data)
             {
                 $("#searchresults").html(data);
+                $("#divSearchResults").show(250);
             }
         });
         return false;
@@ -61,7 +62,7 @@ $(document).ready(function()
             if ($.inArray(userNickName, selectedUsersNicks) === -1) {
 
                 var profilePicVs = $('#profilePicVs').clone().html();
-                profilePicVs += "<td> VS. </td><td><img src=" + profilePic + " width='100px' height='100px'></td>";
+                profilePicVs += "<td class='dunkinFont fontSizeMedium'> VS. </td><td><img src=" + profilePic + " width='100px' height='100px'></td>";
 
                 var nickNameVs = $('#nickNameVs').clone().html();
                 nickNameVs += "<td></td><td>" + userNickName + "</td>";
@@ -83,29 +84,6 @@ $(document).ready(function()
         }
 
         return false;
-    });
-
-    $(document).on('reset', '#newChallenge', function()
-    {
-        $("#profilePicVs").html('<td><img src="{{ profilePic }}" width="100px" height="100px"></td>');
-        $("#nickNameVs").html('<td>{{ nickName }}</td>');
-
-        return true;
-    });
-
-    $('#searchNick').autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                type: "POST",
-                url:"/async/memberautocomplete",
-                data: request,
-                success: response,
-                dataType: 'json'
-            });
-        },
-        autoFocus: true,
-        minLength: 1,
-        delay: 100
     });
 });
 

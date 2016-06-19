@@ -1,18 +1,18 @@
 {% extends "Layout.html" %}
 {% block content %}
 
-<div class="container voffset8">
+<div class="container">
     <div class="row">
         <div class="vertical-center">
             {% for link in links %}
-            <div class="col-md-6 col-lg-6 text-center borderRadius10">
+            <div class="col-sm-6 col-md-6 col-lg-6 text-center">
                 <a href="{{ link['href'] }}">
-                    <div>
-                        <img src="../images/medal.png">
+                    <div class=" borderRadius10 navcolor pad15">
+                        <img style="margin: auto" class="img-responsive" src="../images/medal.png">
                         <br>
                         <br>
                         <br>
-                        <span class="h3 dunkinFont textColor">{{ link['text'] }}</span>
+                        <span class="h3 dunkinFont">{{ link['text'] }}</span>
                     </div>
                 </a>
             </div>

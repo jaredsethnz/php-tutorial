@@ -1,84 +1,96 @@
 {% extends "Layout.html" %}
 {% block content %}
-
-    <div id="activeChallenges">
-        <table border="1px">
-            <thead>
-                <tr>
-                    <th colspan="3">ACTIVE</th>
-                </tr>
-                <tr>
-                    <th>Opponent(s)</th>
-                    <th>Time Remaining</th>
-                    <th>Forfeit Challenge</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for actv in active %}
-            <tr>
-                <td>{{ actv['opponents'] }}</td>
-                <td>{{ actv['timeleft'] }}</td>
-                <td>
-                    {% if actv['forfeited'] == 0 %}
-                    <form action="/challengemanagementff" method="POST">
-                        <input type="hidden" name="forfeitId" value="{{ actv['activeChallengeID'] }}">
-                        <input type="submit" name="Forfeit" value="Forfeit" >
-                    </form>
-                    {% else %}
-                        You have forfeited this challenge
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8  borderRadius10 voffset2 vboffset">
+            <h3 class="textColor">Challenge Management</h3>
+        </div>
     </div>
-    <br>
-    <div id="historyChallenges">
-        <table border="1px">
-            <thead>
-                <tr>
-                    <th colspan="6">HISTORY</th>
-                </tr>
-                <tr>
-                    <th>Opponent(s)</th>
-                    <th>Date Archived</th>
-                    <th>Board Size</th>
-                    <th>Difficulty</th>
-                    <th>Winner</th>
-                </tr>
-            </thead>
-            <tbody>
-            {% for hist in history %}
-            <tr>
-                <td>{{ hist['opponents'] }}</td>
-                <td>{{ hist['dateArchived'] }}</td>
-                <td>{{ hist['boardSize'] }}</td>
-                <td>{{ hist['difficulty'] }}</td>
-                <td>{{ hist['winner'] }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 forumBackgroundColor borderRadius10">
+            <div id="activeChallenges">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="3" class="dunkinFont fontSizeMedium">ACTIVE</th>
+                    </tr>
+                    <tr>
+                        <th>Opponent(s)</th>
+                        <th>Time Remaining</th>
+                        <th>Forfeit Challenge</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for actv in active %}
+                    <tr>
+                        <td>{{ actv['opponents'] }}</td>
+                        <td>{{ actv['timeleft'] }}</td>
+                        <td>
+                            {% if actv['forfeited'] == 0 %}
+                            <form action="/challengemanagementff" method="POST">
+                                <input type="hidden" name="forfeitId" value="{{ actv['activeChallengeID'] }}">
+                                <input type="submit" class="btn btn-default" name="Forfeit" value="Forfeit" >
+                            </form>
+                            {% else %}
+                            You have forfeited this challenge
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <br>
-    <div id="pendingApprovalChallenges">
-        <table border="1px">
-            <thead>
-                <tr>
-                    <th colspan="5">Approval</th>
-                </tr>
-                <tr>
-                    <th>Challenger</th>
-                    <th>Rank</th>
-                    <th>Opponent(s)</th>
-                    <th>Duration</th>
-                    <th>Accept/Decline Challenge</th>
-                </tr>
-            </thead>
-            <tbody>
-
-                {% for pend in pending %}
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 forumBackgroundColor borderRadius10 voffset4">
+            <div id="historyChallenges">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="6" class="dunkinFont fontSizeMedium">HISTORY</th>
+                    </tr>
+                    <tr>
+                        <th>Opponent(s)</th>
+                        <th>Date Archived</th>
+                        <th>Board Size</th>
+                        <th>Difficulty</th>
+                        <th>Winner</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for hist in history %}
+                    <tr>
+                        <td>{{ hist['opponents'] }}</td>
+                        <td>{{ hist['dateArchived'] }}</td>
+                        <td>{{ hist['boardSize'] }}</td>
+                        <td>{{ hist['difficulty'] }}</td>
+                        <td>{{ hist['winner'] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 forumBackgroundColor borderRadius10 voffset4">
+            <div id="pendingApprovalChallenges">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="5" class="dunkinFont fontSizeMedium">APPROVAL</th>
+                    </tr>
+                    <tr>
+                        <th>Challenger</th>
+                        <th>Rank</th>
+                        <th>Opponent(s)</th>
+                        <th>Duration</th>
+                        <th>Accept/Decline Challenge</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for pend in pending %}
                     <tr>
                         <td>{{ pend['challengerNickName'] }}</td>
                         <td>
@@ -100,8 +112,40 @@
                             {% endif %}
                         </td>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-lg-8 forumBackgroundColor borderRadius10 voffset4">
+            <div id="declinedChallenges">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th colspan="6" class="dunkinFont fontSizeMedium">DECLINED</th>
+                    </tr>
+                    <tr>
+                        <th>Opponent(s)</th>
+                        <th>Date Declined</th>
+                        <th>Declined By</th>
+                        <th>Challenger Nickname</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for dec in declined %}
+                    <tr>
+                        <td>{{ dec['opponents'] }}</td>
+                        <td>{{ dec['dateDeclined'] }}</td>
+                        <td>{{ dec['declinedBy'] }}</td>
+                        <td>{{ dec['challengerNickName'] }}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -1,8 +1,7 @@
 {% extends "Layout.html" %}
 {% block content %}
-<div class="voffset6 text-center">
-    <div class="textColor h2 vboffset">SuperSudoku<span class="fontSizeMedium textColor">&reg;</span></div>
-    <div class="textColor h4 vboffset">{{ content }}</div>
+<div class="text-center">
+    <div class="textColor h4">{{ content }}</div>
 </div>
 <div id="myCarousel" class="carousel slide">
     <!-- Indicators -->
@@ -15,8 +14,8 @@
         <div class="item active">
             <div class="container">
                 <div class="row vertical-center">
-                    <div class="col-lg-offset-4 col-lg-4 text-center">
-                        <img src="images/discuss.png" class="img-responsive">
+                    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 text-center">
+                        <img style="margin: auto" src="images/discuss.png" class="img-responsive">
                         <h1 class="titleStyle">Discuss</h1>
                     </div>
                 </div>
@@ -25,8 +24,8 @@
         <div class="item">
             <div class="container">
                 <div class="row vertical-center">
-                    <div class="col-lg-offset-4 col-lg-4 text-center">
-                        <img src="images/trophy.png" class="img-responsive">
+                    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 text-center">
+                        <img style="margin: auto" src="images/trophy.png" class="img-responsive">
                         <h1 class="titleStyle">Challenge</h1>
                     </div>
                 </div>
@@ -34,16 +33,14 @@
         <div class="item">
             <div class="container">
                 <div class="row vertical-center">
-                    <div class="col-lg-offset-4 col-lg-4 text-center">
-                        <img src="images/play.png" class="img-responsive">
+                    <div class="col-sm-offset-2 col-sm-8 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4 text-center">
+                        <img style="margin: auto" src="images/play.png" class="img-responsive">
                         <h1 class="titleStyle">Play</h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-     Controls
     <a class="left carousel-control transparentBackground" href="#myCarousel" data-slide="prev">
         <span class="icon-prev"></span>
     </a>
@@ -59,5 +56,4 @@
         })
     });
 </script>
-{{ content }}
 {% endblock %}

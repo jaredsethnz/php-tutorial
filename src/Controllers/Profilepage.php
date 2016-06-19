@@ -51,10 +51,10 @@ class Profilepage
                 'email' => $result['email'],
                 'challengeable' => intval($result['challengeable']),
                 'rank' => intval($result['rank']),
-                'profilepic' => empty($result['profilePic']) ? 'images/profileImages/default.jpg' : ($result['profilePic'])
+                'profilepic' => empty($result['profilePic']) || $result['profilePic'] == 'null' ? 'images/profileImages/default.jpg' : ($result['profilePic'])
             ];
+            var_dump($result['profilePic']);
         }
-
         $html = $this->renderer->render('Profilepage', $data);
         $this->response->setContent($html);
     }
@@ -62,6 +62,7 @@ class Profilepage
     public function saveChanges()
     {
         $data = [ 'content' => 'Error saving changes!' ];
+        $params = $this->request->getParameters();
         $method = $this->request->getMethod();
 
         if($method == 'POST') {
@@ -70,21 +71,28 @@ class Profilepage
             $tmpName  = $_FILES['photo']['tmp_name'];
             $extension = explode('.', $fileName);
             $extension = $extension[count($extension)-1];
-
-            $filePath = $uploadDir . $_SESSION['nickName'] . 'ProfilePic.' . $extension;
-
-            $result = move_uploaded_file($tmpName, $filePath);
-            if (!$result) {
-                echo "Error uploading file";
-                exit;
-            }
-            $image = new ImageResize($filePath);
-            $image->resize(150, 150, true);
-            $image->save($filePath);
-
+            $challengeable = $params['challengeable'];
             $nick = $_SESSION['nickName'];
-            $_SESSION['profilePic'] = $filePath;
-            $sql = "UPDATE user SET profilePic = '$filePath' WHERE nickName = '$nick'";
+
+            if (strlen($fileName) != 0) {
+                $filePath = $uploadDir . $_SESSION['nickName'] . 'ProfilePic.' . $extension;
+
+                $result = move_uploaded_file($tmpName, $filePath);
+                if (!$result) {
+                    echo "Error uploading file";
+                    exit;
+                }
+                $image = new ImageResize($filePath);
+                $image->resize(150, 150, true);
+                $image->save($filePath);
+                $_SESSION['profilePic'] = $filePath;
+                $sql = "UPDATE user SET profilePic = '$filePath', challengeable = '$challengeable' WHERE nickName = '$nick'";
+            }
+            else
+            {
+                $sql = "UPDATE user SET challengeable = '$challengeable' WHERE nickName = '$nick'";
+            }
+
             $db = $this->commonFunctions->getDatabase();
             $result = $db->execute($sql);
             if ($result)

@@ -34,6 +34,16 @@ group by UserChallengeHistory.challengeHistoryID;
 
 
 # SudokuForum ::
+# SudokuForum :: Get user's declined challenge history
+select group_concat( ( case when UserDeclinedChallenge.challengerNickName = 'GamerGod' then 'You' else UserDeclinedChallenge.challengerNickName end ) separator ', ' ) as 'Opponents', dateDeclined, group_concat( (case when UserDeclinedChallenge.declined = true then UserDeclinedChallenge.challengerNickName else '' end ) separator '' ) as declinedBy, ( case when DeclinedChallenge.challengerNickName = 'GamerGod' then 'You' else DeclinedChallenge.challengerNickName end ) as challengerNickName
+from UserDeclinedChallenge 
+inner join DeclinedChallenge on
+UserDeclinedChallenge.declinedChallengeID = DeclinedChallenge.declinedChallengeID
+where UserDeclinedChallenge.declinedChallengeID in ( select declinedChallengeID from UserDeclinedChallenge where challengerNickName = 'GamerGod' )
+group by UserDeclinedChallenge.declinedChallengeID;
+
+
+# SudokuForum ::
 # SudokuForum :: Get user's challenges pending approval
 select challengerNickName, rank, group_concat( ( case when userNickName = 'GamerGod' then 'You' else userNickName end ) separator ', ' ) as 'Opponent(s)', concat_ws(' ', duration, 'Day(s)') as 'Duration'
 from UserChallengeApproval

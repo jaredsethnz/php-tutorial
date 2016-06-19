@@ -19,26 +19,46 @@
         </tbody>
     </table>
     <button type="button" class="btn btn-success" id="btnNewThread">New Thread</button>
-    <div id="divCreateThread" style="display: none">
-        <h3>Create new Thread</h3>
-        <form action="" id="newThreadForm" method="POST">
-            <input type="hidden" value="{{ category.categoryName }}">
-            <label>Category: </label>
-            <select name="categoryName" required>
-                {% for category in categories %}
-                    <option value="{{ category.categoryName }}">{{ category.categoryName }}</option>
-                {% endfor %}
-            </select>
-            <label>New thread name: </label>
-            <input type="text" name="newThreadName" maxlength="50" required><br>
-            <label>Post</label><br>
-            <textarea name="post" maxlength="300" required></textarea><br>
-            <input type="submit" class="btn btn-success" name="Submit" value="Add thread">
-            <button type="button" class="btn btn-primary" id="cancelNewThread">Cancel</button>
-        </form>
+    <div  class="col-md-12 pad0 margin0" id="divCreateThread" style="display: none">
+        <h4 class="voffset1 textColor">Create new Thread</h4>
+        <div class="forumBackgroundColor borderRadius10 pad15">
+            <form action="" id="newThreadForm" method="POST">
+                <input type="hidden" value="{{ category.categoryName }}">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select name="categoryName" class="form-control" required>
+                        {% for category in categories %}
+                            <option value="{{ category.categoryName }}">{{ category.categoryName }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>New thread name</label>
+                    <input type="text" name="newThreadName" class="form-control" maxlength="50" required>
+                </div>
+                <div class="form-group">
+                <label>Post</label><br>
+                    <textarea name="post" maxlength="300" class="form-control" required></textarea>
+                </div>
+                <div class="text-right">
+                    <input type="submit" class="btn btn-success" name="Submit" value="Add thread">
+                    <button type="button" class="btn btn-primary" id="cancelNewThread">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 <script>
-    $("#newThreadForm").validate();
+    $("#newThreadForm").validate({
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorPlacement: function (error, element) {
+            return true;
+        }
+    });
 </script>
 {% endblock %}

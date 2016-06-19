@@ -1,31 +1,43 @@
 {% extends "Layout.html" %}
 {% block content %}
-
-<form name="profile" enctype="multipart/form-data" action="/profile" method="POST">
-    <img id="preview" src={{ profilepic }} alt="Profile Image" width="150" height="150"/><br>
-    <input type="file" name="photo" id="photo" size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26"><br/>
-
-    <label>Nickname: {{ nickname }}</label><br>
-    <label>First Name: {{ firstname }}</label><br>
-    <label>Last Name: {{ lastname }}</label><br>
-    <label>Email: {{ email }}</label><br>
-    <label>Challengeable: </label>
-
-    {% if challengeable == 1 %}
-        <input type="radio" name="challengeable" value="0"> No
-        <input type="radio" name="challengeable" value="1" checked> Yes
-    {% else %}
-        <input type="radio" name="challengeable" value="0" checked> No
-        <input type="radio" name="challengeable" value="1"> Yes
-    {% endif %}
-    <br>
-    <label>Rank: </label>
-    {% for i in 1..rank %}
-        <img src="images/star.png" width="15" height="15">
-    {% endfor %}
-    <br>
-    <input type="submit" class="button" name="Submit" value="Submit">
-</form>
+<div class="container">
+    <div class="row voffset4">
+        <div class="col-sm-offset-2 col-sm-8  col-md-offset-2 col-md-8  col-lg-offset-3 col-lg-6  forumBackgroundColor borderRadius10 pad30">
+            <div class="row">
+                <form name="profile" enctype="multipart/form-data" action="/profile" method="POST">
+                    <div class="col-sm-4 col-md-4 col-lg-4 text-center pad0">
+                        <img id="preview" class="borderRadius10" src={{ profilepic }} alt="Profile Image" width="150" height="150"/><br>
+                <span class="dunkinFont btn btn-info btn-file voffset2">
+                    Browse...<input type="file" name="photo" id="photo" size="2000000" accept="image/gif, image/jpeg, image/x-ms-bmp, image/x-png" size="26">
+                </span>
+                    </div>
+                    <div class="col-sm-8 col-md-8 col-lg-8 padLeft30 voffset2">
+                        <label>Nickname: {{ nickname }}</label><br>
+                        <label>First Name: {{ firstname }}</label><br>
+                        <label>Last Name: {{ lastname }}</label><br>
+                        <label>Email: {{ email }}</label><br>
+                        <label>Challengeable: </label>
+                        {% if challengeable == 1 %}
+                        <label class="radio-inline"><input type="radio" name="challengeable" value="0">No</label>
+                        <label class="radio-inline"><input type="radio" name="challengeable" value="1" checked>Yes</label>
+                        {% else %}
+                        <label class="radio-inline"><input type="radio" name="challengeable" value="0" checked>No</label>
+                        <label class="radio-inline"><input type="radio" name="challengeable" value="1">Yes</label>
+                        {% endif %}
+                        <br>
+                        <label>Rank: </label>
+                        {% for i in 1..rank %}
+                        <img src="images/star.png" width="15" height="15">
+                        {% endfor %}
+                        <div class="text-right">
+                            <input type="submit" class="btn btn-default" name="Submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function readURL(input) {
         if (input.files && input.files[0]) {
